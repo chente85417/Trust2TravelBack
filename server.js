@@ -951,7 +951,7 @@ serverObj.get("/initSeekerData", (req, res) => {
                         //Query failed
                         throw err;
                     }//if
-                    else if (result[0].RES)
+                    else if (result.length)
                     {
                         connectionDB.end();
                         //Found token in DB
