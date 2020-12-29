@@ -979,6 +979,53 @@ serverObj.get("/initSeekerData", (req, res) => {
     });
 });
 
+//RETRIEVE BASIC CERTIFICATES DATA (GET)
+serverObj.get("/getCertificatesBasics", (req, res) => {
+    //Generic failure message
+    const failMsg = "";
+    
+    //--CREATE A CONNECTION WITH DB--//
+    connectorDB("MySQL", connectionData)
+    .then((connectionDB) => {
+        //Created connection with DB --> GO ON
+        try {
+            connectionDB.query({
+                sql : "SELECT CERTID, ETIQUETA, DESCRIPCION, WEBSITE, LOGO FROM certificados;",
+                values : []},
+                function (err, result) {
+                    if (err)
+                    {
+                        //Query failed
+                        throw err;
+                    }//if
+                    else if (result.length)
+                    {
+                        connectionDB.end();
+                        //Found token in DB
+                        res.send({"ret" : true, "caption" : result});
+                        //.redirect(`${process.env.URLFRONT}XX`);
+                    }//else if
+                    else
+                    {
+                        connectionDB.end();
+                        console.log("No se han encontrado datos de certificados en la BD");
+                        res.send({"ret" : false, "caption" : failMsg});
+                    }//else
+                });
+            } catch(err){
+                connectionDB.end();
+                console.log("Fallo en sentencia SQL",err);
+                res.send({"ret" : false, "caption" : failMsg});
+            }
+    })
+    //DB connection KO --> exit
+    .catch((fail) => {
+        //The connection with DB failed --> Exit sending error information
+        console.log("Fallo de conexión con la BD",fail);
+        res.send({"ret" : false, "caption" : failMsg});
+    });
+});
+
 //SEARCH ESTABLISHMENTS (POST)
 serverObj.post("/search", (req, res) => {
     //Generic failure message
