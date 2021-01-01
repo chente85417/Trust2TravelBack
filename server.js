@@ -1027,12 +1027,12 @@ serverObj.get("/getCertificatesBasics", (req, res) => {
 });
 
 //SEARCH ESTABLISHMENTS (POST)
-serverObj.post("/search", (req, res) => {
+serverObj.post("/startSearch", (req, res) => {
     //Generic failure message
     const failMsg = "Lo sentimos. No se ha podido completar la búsqueda requerida";
 
     //--CONFIGURE THE SQL QUERY--//
-    let strSQLinit = `  SELECT alojamientos.*, certificados.*
+    let strSQLinit = `  SELECT alojamientos.ALID, alojamientos.NOMBRE, certificados.CERTID
                         FROM alojamientos
                             LEFT JOIN union_alojamientos_certificados
                                 ON alojamientos.ALID = union_alojamientos_certificados.EXT_ALID
@@ -1053,8 +1053,7 @@ serverObj.post("/search", (req, res) => {
             return acum;
         }, strSQLinit);
 
-    strSQL += `;`;
-    console.log(strSQL);
+    strSQL += ` ORDER BY alojamientos.NOMBRE;`;
 
     //--RETRIEVE DATA BASED ON CURRENT REQUESTS--//
     connectorDB("MySQL", connectionData)
@@ -1091,6 +1090,147 @@ serverObj.post("/search", (req, res) => {
         res.send({"ret" : false, "caption" : failMsg});
     });
 
+});
+
+//RETRIEVE BASIC DATA FOR AN ESTABLISHMENT (GET)
+serverObj.get("/getEstablishmentBasics/:alID", (req, res) => {
+    //Generic failure message
+    const failMsg = "";
+    
+    //--CREATE A CONNECTION WITH DB--//
+    connectorDB("MySQL", connectionData)
+    .then((connectionDB) => {
+        //Created connection with DB --> GO ON
+        try {
+            connectionDB.query({
+                sql : "SELECT NOMBRE, DIRECCION, PROVINCIA, LOGO FROM alojamientos WHERE ALID = ?;",
+                values : [req.params.alID]},
+                function (err, result) {
+                    if (err)
+                    {
+                        //Query failed
+                        throw err;
+                    }//if
+                    else if (result.length)
+                    {
+                        connectionDB.end();
+                        //Found data in DB
+                        res.send({"ret" : true, "caption" : result});
+                        //.redirect(`${process.env.URLFRONT}XX`);
+                    }//else if
+                    else
+                    {
+                        connectionDB.end();
+                        console.log("Datos no disponibles");
+                        res.send({"ret" : false, "caption" : failMsg});
+                    }//else
+                });
+            } catch(err){
+                connectionDB.end();
+                console.log("Fallo en sentencia SQL",err);
+                res.send({"ret" : false, "caption" : failMsg});
+            }
+    })
+    //DB connection KO --> exit
+    .catch((fail) => {
+        //The connection with DB failed --> Exit sending error information
+        console.log("Fallo de conexión con la BD",fail);
+        res.send({"ret" : false, "caption" : failMsg});
+    });
+});
+
+//RETRIEVE DETAILED DATA FOR AN ESTABLISHMENT (GET)
+serverObj.get("/getEstablishmentDetails/:alID", (req, res) => {
+    //Generic failure message
+    const failMsg = "";
+    
+    //--CREATE A CONNECTION WITH DB--//
+    connectorDB("MySQL", connectionData)
+    .then((connectionDB) => {
+        //Created connection with DB --> GO ON
+        try {
+            connectionDB.query({
+                sql : "SELECT * FROM alojamientos WHERE ALID = ?;",
+                values : [req.params.alID]},
+                function (err, result) {
+                    if (err)
+                    {
+                        //Query failed
+                        throw err;
+                    }//if
+                    else if (result.length)
+                    {
+                        connectionDB.end();
+                        //Found data in DB
+                        res.send({"ret" : true, "caption" : result});
+                        //.redirect(`${process.env.URLFRONT}XX`);
+                    }//else if
+                    else
+                    {
+                        connectionDB.end();
+                        console.log("Datos no disponibles");
+                        res.send({"ret" : false, "caption" : failMsg});
+                    }//else
+                });
+            } catch(err){
+                connectionDB.end();
+                console.log("Fallo en sentencia SQL",err);
+                res.send({"ret" : false, "caption" : failMsg});
+            }
+    })
+    //DB connection KO --> exit
+    .catch((fail) => {
+        //The connection with DB failed --> Exit sending error information
+        console.log("Fallo de conexión con la BD",fail);
+        res.send({"ret" : false, "caption" : failMsg});
+    });
+});
+
+//RETRIEVE CERTIFICATES FOR AN ESTABLISHMENT (GET)
+serverObj.get("/getCertificates/:alID", (req, res) => {
+    //Generic failure message
+    const failMsg = "";
+    
+    //--CREATE A CONNECTION WITH DB--//
+    connectorDB("MySQL", connectionData)
+    .then((connectionDB) => {
+        //Created connection with DB --> GO ON
+        try {
+            connectionDB.query({
+                sql : "SELECT CERTID, ETIQUETA, LOGO FROM union_alojamientos_certificados AS uac LEFT JOIN certificados AS c ON uac.EXT_CERTID = c.CERTID WHERE uac.EXT_ALID = ?;",
+                values : [req.params.alID]},
+                function (err, result) {
+                    if (err)
+                    {
+                        //Query failed
+                        throw err;
+                    }//if
+                    else if (result.length)
+                    {
+                        connectionDB.end();
+                        //Found data in DB
+                        res.send({"ret" : true, "caption" : result});
+                        //.redirect(`${process.env.URLFRONT}XX`);
+                    }//else if
+                    else
+                    {
+                        connectionDB.end();
+                        console.log("Datos no disponibles");
+                        res.send({"ret" : false, "caption" : failMsg});
+                    }//else
+                });
+            } catch(err){
+                connectionDB.end();
+                console.log("Fallo en sentencia SQL",err);
+                res.send({"ret" : false, "caption" : failMsg});
+            }
+    })
+    //DB connection KO --> exit
+    .catch((fail) => {
+        //The connection with DB failed --> Exit sending error information
+        console.log("Fallo de conexión con la BD",fail);
+        res.send({"ret" : false, "caption" : failMsg});
+    });
 });
 
 /*
