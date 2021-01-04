@@ -488,7 +488,7 @@ serverObj.post("/login", (req, res) => {
                                                                 //The onboarding flag has been properly updated
                                                                 connectionDB.end();
                                                                 //Send JWT to the browser
-                                                                res.cookie("JWT", jwt, {"httpOnly" : true})
+                                                                res.cookie("JWT", jwt)//, {"httpOnly" : true})
                                                                 .redirect(`${process.env.URLFRONT}revista`);
                                                             }//else if
                                                             else
@@ -505,8 +505,8 @@ serverObj.post("/login", (req, res) => {
                                                     connectionDB.end();
                                                     //Is not the first access so redirect to the home page
                                                     //Send JWT to the browser
-                                                    res.cookie("JWT", jwt, {"httpOnly" : true})
-                                                    .send({"ret" : true, "caption" : "Sesión abierta"});
+                                                    res.cookie("JWT", jwt)//, {"httpOnly" : true})
+                                                    .send({"ret" : true, "caption" : jwt});
                                                 }//else
                                             }//if
                                             else
@@ -1032,7 +1032,7 @@ serverObj.post("/startSearch", (req, res) => {
     const failMsg = "Lo sentimos. No se ha podido completar la búsqueda requerida";
 
     //--CONFIGURE THE SQL QUERY--//
-    let strSQLinit = `  SELECT alojamientos.ALID, alojamientos.NOMBRE, certificados.CERTID
+    let strSQLinit = `  SELECT DISTINCT alojamientos.ALID, alojamientos.NOMBRE, certificados.CERTID, certificados.ETIQUETA, certificados.LOGO
                         FROM alojamientos
                             LEFT JOIN union_alojamientos_certificados
                                 ON alojamientos.ALID = union_alojamientos_certificados.EXT_ALID
@@ -1045,15 +1045,30 @@ serverObj.post("/startSearch", (req, res) => {
                         WHERE
                         (PROVINCIA LIKE ? OR COMUNIDAD LIKE ?)`;
 
-    let strSQL = req.body.filtros.reduce((acum, item, index) => {
+    let hasCategories = req.body.filtros.reduce((acum, item) => {
+        return acum || item;
+    }, false);
+
+    let strSQL;
+    if (hasCategories)
+    {
+        strSQLinit += ` AND (`;
+        strSQL = req.body.filtros.reduce((acum, item, index) => {
             if (item)
             {
-                acum += ` AND categorias.CATID = '${index}'`; 
+                acum += `categorias.CATID = '${index + 1}' OR `; 
             }//if
             return acum;
         }, strSQLinit);
+        strSQL = strSQL.substring(0, strSQL.length - 3);
+        strSQL += `) ORDER BY alojamientos.NOMBRE;`;
+    }//if
+    else
+    {
+        strSQL = strSQLinit + ` ORDER BY alojamientos.NOMBRE;`;
+    }//else
 
-    strSQL += ` ORDER BY alojamientos.NOMBRE;`;
+    //console.log(strSQL);
 
     //--RETRIEVE DATA BASED ON CURRENT REQUESTS--//
     connectorDB("MySQL", connectionData)
@@ -1103,7 +1118,7 @@ serverObj.get("/getEstablishmentBasics/:alID", (req, res) => {
         //Created connection with DB --> GO ON
         try {
             connectionDB.query({
-                sql : "SELECT NOMBRE, DIRECCION, PROVINCIA, LOGO FROM alojamientos WHERE ALID = ?;",
+                sql : "SELECT NOMBRE, DIRECCION, DESCRIPCION, PROVINCIA, LOGO FROM alojamientos WHERE ALID = ?;",
                 values : [req.params.alID]},
                 function (err, result) {
                     if (err)
@@ -1120,6 +1135,7 @@ serverObj.get("/getEstablishmentBasics/:alID", (req, res) => {
                     }//else if
                     else
                     {
+
                         connectionDB.end();
                         console.log("Datos no disponibles");
                         res.send({"ret" : false, "caption" : failMsg});
@@ -1231,6 +1247,159 @@ serverObj.get("/getCertificates/:alID", (req, res) => {
         console.log("Fallo de conexión con la BD",fail);
         res.send({"ret" : false, "caption" : failMsg});
     });
+});
+
+//RETRIEVE DATA FROM A CERTIFICATE ID (GET)
+serverObj.get("/getCertificateData/:certID", (req, res) => {
+    //Generic failure message
+    const failMsg = "";
+    
+    //--CREATE A CONNECTION WITH DB--//
+    connectorDB("MySQL", connectionData)
+    .then((connectionDB) => {
+        //Created connection with DB --> GO ON
+        try {
+            connectionDB.query({
+                sql : "SELECT ETIQUETA, LOGO FROM certificados WHERE CERTID = ?;",
+                values : [req.params.certID]},
+                function (err, result) {
+                    if (err)
+                    {
+                        //Query failed
+                        throw err;
+                    }//if
+                    else if (result.length)
+                    {
+                        connectionDB.end();
+                        //Found data in DB
+                        res.send({"ret" : true, "caption" : result});
+                        //.redirect(`${process.env.URLFRONT}XX`);
+                    }//else if
+                    else
+                    {
+                        connectionDB.end();
+                        console.log("Datos no disponibles");
+                        res.send({"ret" : false, "caption" : failMsg});
+                    }//else
+                });
+            } catch(err){
+                connectionDB.end();
+                console.log("Fallo en sentencia SQL",err);
+                res.send({"ret" : false, "caption" : failMsg});
+            }
+    })
+    //DB connection KO --> exit
+    .catch((fail) => {
+        //The connection with DB failed --> Exit sending error information
+        console.log("Fallo de conexión con la BD",fail);
+        res.send({"ret" : false, "caption" : failMsg});
+    });
+});
+
+//RETRIEVE ACTIVITIES (GET)
+serverObj.get("/getActivities/:loc", (req, res) => {
+    //Generic failure message
+    const failMsg = "";
+    
+    //--CREATE A CONNECTION WITH DB--//
+    connectorDB("MySQL", connectionData)
+    .then((connectionDB) => {
+        //Created connection with DB --> GO ON
+        try {
+            connectionDB.query({
+                sql : "SELECT ACTID, NOMBRE, DESCRIPCION, DIRECCION, LOCALIDAD, IMAGEN FROM actividades WHERE PROVINCIA LIKE ?;",
+                values : [req.params.loc]},
+                function (err, result) {
+                    if (err)
+                    {
+                        //Query failed
+                        throw err;
+                    }//if
+                    else if (result.length)
+                    {
+                        connectionDB.end();
+                        //Found data in DB
+                        res.send({"ret" : true, "caption" : result});
+                        //.redirect(`${process.env.URLFRONT}XX`);
+                    }//else if
+                    else
+                    {
+                        connectionDB.end();
+                        console.log("Datos no disponibles");
+                        res.send({"ret" : false, "caption" : failMsg});
+                    }//else
+                });
+            } catch(err){
+                connectionDB.end();
+                console.log("Fallo en sentencia SQL",err);
+                res.send({"ret" : false, "caption" : failMsg});
+            }
+    })
+    //DB connection KO --> exit
+    .catch((fail) => {
+        //The connection with DB failed --> Exit sending error information
+        console.log("Fallo de conexión con la BD",fail);
+        res.send({"ret" : false, "caption" : failMsg});
+    });
+});
+
+//SEARCH USERS FAVOURITES (POST)
+serverObj.post("/getFavs", (req, res) => {
+    //Generic failure message
+    const failMsg = "Lo sentimos. No se ha podido completar la búsqueda requerida";
+
+    //--CONFIGURE THE SQL QUERY--//
+    let strSQL = `  SELECT DISTINCT alojamientos.ALID,
+                                    alojamientos.NOMBRE,
+                                    certificados.CERTID,
+                                    certificados.ETIQUETA,
+                                    certificados.LOGO
+                    FROM alojamientos
+                            LEFT JOIN union_alojamientos_certificados ON alojamientos.ALID = union_alojamientos_certificados.EXT_ALID
+                            LEFT JOIN certificados ON union_alojamientos_certificados.EXT_CERTID = certificados.CERTID
+                    WHERE (alojamientos.ALID IN (   SELECT favoritos.EXT_ALID
+                            	                    FROM favoritos
+                           			                    LEFT JOIN usuarios ON usuarios.USRID = favoritos.EXT_USRID
+                                                    WHERE usuarios.EMAIL = ?))
+                    ORDER BY alojamientos.NOMBRE;`;
+
+    //console.log(strSQL);
+
+    //--RETRIEVE DATA BASED ON CURRENT REQUESTS--//
+    connectorDB("MySQL", connectionData)
+    .then((connectionDB) => {
+        try {
+        //Created connection with DB --> GO ON
+        connectionDB.query({
+            sql: strSQL,
+            values: [req.body.user]},
+            function (err, results) {
+                if (err)
+                {
+                    //Query failed
+                    throw err;
+                }//if
+                else
+                {
+                    //The onboarding flag has been properly updated
+                    connectionDB.end();
+                    //Send results to front
+                    res.send({"ret" : true, "data" : results});
+                }//else
+            });
+        } catch(err){
+            connectionDB.end();
+            console.log("Fallo en sentencia SQL",err);
+            res.send({"ret" : false, "caption" : failMsg});
+        }
+    })
+    //DB connection KO --> exit
+    .catch((fail) => {
+        //The connection with DB failed --> Exit sending error information
+        console.log("Fallo de conexión con la BD",fail);
+        res.send({"ret" : false, "caption" : failMsg});
+    });
+
 });
 
 /*
