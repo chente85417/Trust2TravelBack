@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 02-01-2021 a las 23:39:55
+-- Tiempo de generación: 04-01-2021 a las 21:02:37
 -- Versión del servidor: 8.0.22
 -- Versión de PHP: 7.4.3
 
@@ -157,8 +157,11 @@ INSERT INTO `alojamientos` (`ALID`, `NOMBRE`, `LONGITUD`, `LATITUD`, `DIRECCION`
 (222, 'Sabinares del Arlanza', -3.58536, 42.0428, 'C/ Las Turriendas 70 ', '09347 Puentedura.', 'Burgos', 'Castilla y León', 'España', '947 616 908', 'www.sabinaresdelarlanza.com', 'info@sabinaresdelarlanza.com', 'https://www.ecotur.es/v_portal/inc/imagen.asp?f=12196252_904666452915943_68537316567.jpg&c=18489', 'Hotel Rural bioclimático y sostenible, ubicado en Puentedura, junto al río Arlanza, a medio camino entre Lerma y Covarrubias, en la provincia de Burgos. Es un espacio innovador que amplía la oferta turística de la comunidad de Castilla y León. Os invitamos a practicar agroturismo conociendo nuestro proyecto y sus peculiaridades y el ecoturismo, ese turismo orientado a la naturaleza disfrutando del espectacular entorno que nos ofrece el parque natural de \"La Yecla y los Sabinares del Arlanza\".'),
 (223, 'Sele - Casa d\'Aldea', -5.3224, 43.394, 'Samartín, s/n ', '33583 Borines. Piloña', 'Asturias', 'Asturias', 'España', '985707587', 'www.sele.com.es', 'info@sele.com.es', 'https://www.ecotur.es/v_portal/inc/imagen.asp?f=Casa_Sele_entrada_(1)2153.jpg&c=20107', 'La nuestra es una Casa d\"Aldea de alquiler compartido (bed&breakfast) con más de cien años de antigüedad. En su restauración integral hemos puesto al día esta casa tradicional asturiana, potenciando la propia cultura atlántica para disfrute de nuestros huéspedes. Os invitamos a descansar con nosotros y a tomaros un respiro en medio de la campiña asturiana, con nuestra propuesta de ocio culto y activo. De entre las posibles traducciones que podríamos escoger para intentar incorporar todos los matices de la expresión inglesa “country life” a nuestra lengua, quizá sea “vida de país” la más adecuada de todas. Country Life no significa sólo vida rural, es algo más. Es muncho más. Somos munchos los que prácticamente nacimos con la crisis económica, social y cultural que se ceba con nuestra Asturias desde el último cuarto del siglo XX, sin tener aún muy claro a dónde nos está encaminando la miserable dinámica clientelar articulada entorno a la misma, generadora de un lamentable escenario que a muchos nos parece por completo estéril. Dende este rincón, queremos haceros partícipes de nuestra propia aventura y deseamos mostraros cómo munchos conciudadanos nuestros, eligen día tras día, de forma callada y modesta, enfrentar los profundos cambios sociales y económicos vinculados a esa crisis desde una perspectiva por completo nueva. Queremos mostraros en la medida de lo posible esa nueva “vida de país” que surge en Asturias –al igual que en otros muchos otros lugares- en estos tiempos inciertos, encarándolos con imaginación y valentía. estos tiempos inciertos, encarándolos con imaginación y valentía. Una vida rica en valores culturales y humanos, abierta al mundo y vinculada decididamente con nuestro excepcional medio natural. Una vida alejada del estándar urbano y uniformizador que impone el sistema. Una vida moderna que se afirma y evoluciona desde las formas tradicionales de la vida rural, apoyándose en la esencia de la memoria de un pueblo que fue y que aún no quiere dejar de ser.Os invitamos a vivir con nosotros, y de otra forma, el presente y futuro de este país de nombre plural, único y también mágico: Asturias. Afayáivos, esti ye’l vuestru llar.'),
 (224, 'Turismo Rural La Ojinegra', -0.529734, 40.9691, 'C/ La Iglesia nº 21  ', '44509 Alloza', 'Teruel', 'Aragón', 'España', '696816138', 'laojinegra.com', 'info@laojinegra.com', 'https://www.ecotur.es/v_portal/inc/imagen.asp?f=Restaurante-km08964.jpg&c=15818', 'Turismo rural La Ojinegra, es una casa rural de categoría superior que dispone de tres amplias habitaciones dobles. Destaca además por su restaurante ecológico El Morral de La Ojinegra, con su cocina a fuego de leña, platos con ingredientes ecológicos certificados, de proximidad y de comercio justo y con la mención \"restaurante Km0\" de Slow Food por lo que adquiere un compromiso para fomentar la biodiversidad y promover la cultura alimentaria.'),
-(400, 'Ulle Gorri', -2.94448, 42.9732, 'Apregindana Lekua , San Lorenzo 2', '01449 Untza- Apregindana', 'Álava', 'País Vasco', 'España', '+34 647 712 806', 'https://ullegorri.com/', 'contact@ullegorri.com', 'https://ullegorri.com/wp-content/uploads/2020/06/ULLE-GORRI_WEB_001-scaled-1.jpg', 'Ulle Gorri Baserria is an old basque farmhouse, located in a privileged environment in the Basque Mountains. It´s surrounded by a beautiful sea of ​​green meadows throughout the year, in the foothills of the mythical Gorbeia Mountain, near the beech forest of Altube and the Gujuli waterfall and it´s also the closest accommodation, only a short walking distance, to the Salto del Nervión, the highest waterfall in Spain. There are innumerable activities to do during your stay with us. Great location: less than 20 minutes from Vitoria, 40 minutes from Bilbao and La Rioja and only an hour and 15 minutes from Donosti (San Sebastián) or Pamplona and with easy access just 10 minutes away from the motorway exit.1. Etxea Rural House from 6 to 12 persons - «Etxea», which means house in Euskera, has been specifically restored recovering old original materials, to give the home a unique personality that seduces our guests. The restored antique furniture, the magnificent doors and the precious earthen pottery, which belonged to an ancient palace in the area, make Etxea at Ulle Gorri a very special place to rest and enjoy.');
+(300, 'Inter Continetal Madrid', -3.69229, 40.4362, 'Paseo de la Castellana, 49,\n Madrid, 28046, Spain', 'Madrid', 'Madrid', 'Madrid', 'España', '', 'InterContinental Madrid', '', 'https://www.thesloaney.com/wp-content/uploads/2016/11/Madrid3.jpg', 'Con 66 años de historia le descubrimos todos los secretos de la capital española en el enclave único del Paseo de la Castellana. Conozca un referente de la hotelería española con los estándares de la prestigiosa marca internacional InterContinental Hotels & Resorts. Por sus 302 habitaciones, 16 salas para eventos, el exclusivo Club InterContinental y el Restaurante El Jardín seremos su residencia favorita en Madrid.'),
+(301, 'Mas Salagros EcoResort', 2.27755, 41.5315, 'Riera de Vallromanes, s/n\nVallromanes, 08188', 'Vallromanes', 'Barcelona', 'Cataluña', 'España', '93 565 60 65', 'Mas Salagros EcoResort', 'recepcion@massalagros.com\n', 'https://www.bing.com/images/search?view=detailV2&ccid=R%2bLD2Uxh&id=AEFF0DDB8BCEB42912D65496E0E16D637219FB62&thid=OIP.R-LD2UxhWjL8p3mPfLfTFgHaES&mediaurl=https%3a%2f%2fwww.cellophaneland.com%2fwp-content%2fuploads%2f2017%2f04%2fhotel-mas-salagros-ecoresort-aire-ancient-baths-sportrooms-viajar-deporte-alojamiento-portada-1280x720s-1.jpg&exph=684&expw=1183&q=m%c3%a1s+salagros+ecoresort&simid=608048648188857082&ck=63902756CB0992AE3BAFA9A136F12403&selectedIndex=3&FORM=IRPRST', 'Somos un hotel 100% ecológico. En Mas Salagros cumplimos con los estándares establecidos en la normativa europea sobre sostenibilidad, que incluyen materiales de construcción, eficiencia energética y gestión de residuos. En Mas Salagros, encontrarás de todo, desde eco-amenities hasta ingredientes locales de temporada en el restaurante.');
 INSERT INTO `alojamientos` (`ALID`, `NOMBRE`, `LONGITUD`, `LATITUD`, `DIRECCION`, `LOCALIDAD`, `PROVINCIA`, `COMUNIDAD`, `PAIS`, `TELEFONO`, `WEBSITE`, `EMAIL`, `LOGO`, `DESCRIPCION`) VALUES
+(302, 'Villa Magna Hotel ', -3.68821, 40.43, 'Paseo de la Castellana 22\n28046 Madrid, España', 'Madrid', 'Madrid', 'Madrid', 'España', '91 587 1234', 'Villa Magna Hotel', 'villamagna@villamagna.es', 'https://www.bing.com/images/search?view=detailV2&ccid=cJ%2fnr4U0&id=4735BF895995D3A674F8C41F85772FF90EE41426&thid=OIP.cJ_nr4U0vj7DSAb-DPxM_QHaFA&mediaurl=https%3a%2f%2fmedia-cdn.tripadvisor.com%2fmedia%2fphoto-s%2f08%2f1e%2fb9%2fd7%2fhotel-villa-magna.jpg&exph=372&expw=550&q=villa+magna+madrid&simid=608031386677740433&ck=33954EEF0F1373B99429C387905CE356&selectedIndex=1&FORM=IRPRST', 'Con delicada elegancia, Villa Magna es el hotel más distinguido del corazón de Madrid.Su privilegiada ubicación, cerca de museos de renombre, de los restaurantes más novedosos y junto a una vibrante vida nocturna, además de encontrarse en el mejor distrito comercial de la ciudad, Villa Magna captura la vivacidad de la cultura española y la calidez de la hospitalidad europea. El hotel perfecto para explorar la majestuosa capital de España.\n¡Disfrute de una experiencia Villa Magna !'),
+(400, 'Ulle Gorri', -2.94448, 42.9732, 'Apregindana Lekua , San Lorenzo 2', '01449 Untza- Apregindana', 'Álava', 'País Vasco', 'España', '+34 647 712 806', 'https://ullegorri.com/', 'contact@ullegorri.com', 'https://ullegorri.com/wp-content/uploads/2020/06/ULLE-GORRI_WEB_001-scaled-1.jpg', 'Ulle Gorri Baserria is an old basque farmhouse, located in a privileged environment in the Basque Mountains. It´s surrounded by a beautiful sea of ​​green meadows throughout the year, in the foothills of the mythical Gorbeia Mountain, near the beech forest of Altube and the Gujuli waterfall and it´s also the closest accommodation, only a short walking distance, to the Salto del Nervión, the highest waterfall in Spain. There are innumerable activities to do during your stay with us. Great location: less than 20 minutes from Vitoria, 40 minutes from Bilbao and La Rioja and only an hour and 15 minutes from Donosti (San Sebastián) or Pamplona and with easy access just 10 minutes away from the motorway exit.1. Etxea Rural House from 6 to 12 persons - «Etxea», which means house in Euskera, has been specifically restored recovering old original materials, to give the home a unique personality that seduces our guests. The restored antique furniture, the magnificent doors and the precious earthen pottery, which belonged to an ancient palace in the area, make Etxea at Ulle Gorri a very special place to rest and enjoy.'),
 (401, 'La Posada de San Marcos, Millán Arkwright SL', -6.66455, 37.8732, 'Calle Colon 12', '21340 Alajar', 'Huelva', 'Andalucía', 'España', '+34 959 125 712', 'http://www.sanmarcosalajar.com', 'info@posadasalajar.com', 'https://sanmarcosalajar.com/wp-content/uploads/2017/09/san-marcos-alajar-rural-hotel-andalucia-garden-2.jpg', 'Our carbon footprint becomes more important everyday which is why we decided to create a low impact, environmentally friendly hotel. By staying at La Posada de San Marcos you too will be helping preserve the environment and be able to enjoy the sensation created by energy efficient, carbon neutral accommodation while maintaining an excellent standard of quality. We have created a low impact environmentally friendly building using as much of the original material while introducing modern day elements. The stone in the perimeter walls is from the old house as is the sand used to mix the mortar; the roof tiles were carefully removed and have been reused to ensure the building blends in with the rest of the village when seen from the Peña. We also managed to save enough to use them as wall light in the public areas of the house. All the old chestnut beams and the original front door were renovated by our local carpenters and we actually made a small wardrobe in one of the bedrooms using one of the old doors from the original house. The majority of the furniture used is antique and many an hour was put into restoring it – each room is decorated in a different and rather eclectic way! Lots of the old bottles we are using for decoration were found in the house and as time goes by we continue to decorate the house with items usually found up in somebody’s attic!'),
 (402, 'TAKE HOSTEL CONIL', -6.0874, 36.2734, 'Calle Almadraba N9 Locales 9', '11140 Conil De La Frontera', 'Cádiz', 'Andalucía', 'España', '+34 605 462 884', 'http://WWW.TAKEHOSTELCONIL.COM', 'reservas@takehostelconil.com', 'https://takehostelconil.com/wp-content/uploads/2019/07/DSC5028jpg_1920x1080.jpg', 'NO somos un HOSTEL, NO somos un HOTEL, “SOMOS LA COMBINACIÓN PERFECTA DE AMBOS” En TAKE Hostel hemos creado el lugar perfecto para descansar, disfrutar del mar, de la buena comida y de los deportes acuáticos como el Surf, Kitesurf y Windsurf. Situado en el centro de Conil de la Frontera y a 100 metros de la playa, TAKE Hostel es el sitio perfecto para tus vacaciones. Nuestro hostel ofrece escuela de Surf , alquiler de material , Paddel Surf , fatbikes , Yoga y clases de Kitesurf . Disponemos de una escuela de Surf y beach club en la Playa de El Palmar , ofreciendo un transporte gratuito entre el hostel y nuestras instalaciones en El Palmar .'),
 (403, 'TECNIBER, SA', 1.99393, 42.0526, 'C/ Rasa Dels Molins 24', '08600 Berga', 'Barcelona', 'Cataluña', 'España', '+34 938 220 634', 'http://www.mateus.cat', 'ruralmateus@gmail.com', 'http://www.mateus.cat/new/wp-content/uploads/porxo-de-mateus.jpg', 'El Porxo es una antigua masía restaurada con mucho gusto que puede acoger cómodamente de 11 a 15 personas. Dispone de una sola planta de fácil acceso, lo que la hace adecuada para personas con movilidad reducida. Tiene una magnífica sala de estar con chimenea, una cocina totalmente equipada, una acogedora sala recreativa y un elegante patio con barbacoa para gozar de una experiencia inolvidable.'),
@@ -205,6 +208,82 @@ INSERT INTO `alojamientos` (`ALID`, `NOMBRE`, `LONGITUD`, `LATITUD`, `DIRECCION`
 (446, 'Camping & Bungalows Zumaia', -2.24788, 43.2899, 'Basusta Bidea 16', '20750, Zumaia', 'Vizcaya', 'País Vasco', 'España', '943860475', 'https://www.campingzumaia.com', '', 'https://www.campingzumaia.com/images/camping-zumaia/vistas/camping-zumaia-vistas-01.jpg', 'El Camping Bungalows Zumaia de 1ª categoría, se encuentra en Zumaia, villa situada dentro del Geoparque de Guipuzcoa, País Vasco, rodeada de verdes montañas que descienden hasta el mar, formando los acantilados del Flysch. Es, sin duda, uno de los tramos más hermosos de la costa guipuzcoana.'),
 (447, 'Camping el Roble Verde', -2.87936, 42.7955, 'Nuvilla 99', '01428 Nuvilla', 'Álava', 'País Vasco', 'España', '945063350', 'http://www.campingelrobleverde.com', 'info@campingelrobleverde.com', 'https://campingelrobleverde.com/wp-content/uploads/2015/02/parque-infantil-2-570x455.jpg', 'Camping de ambiente tranquilo y familiar, al Sur de Álava, en el pueblo de Nuvilla, Ribera Alta. Entre Vitoria-Gasteiz y La Rioja, te ofrecemos un entorno ideal para disfrutar de la naturaleza y una buena ubicación para conocer los principales puntos turísticos de Euskadi. '),
 (448, 'Camping Angosto', -3.06868, 42.8425, 'Villanañe-Angosto 2, BIS', '01426 Valdegovía', 'Álava', 'País Vasco', 'España', '945353271', 'http://www.camping-angosto.com', 'info@camping-angosto.com', 'https://www.camping-angosto.com/images/galeria/cabanas-4-personas-villanane/camping-en-anana-4PAX-01.jpg', 'El Camping Angosto, es un camping de interior de 1ª categoría, ubicado en Villanañe, en el Valle de Valdegovía, Araba.'),
+(500, 'Gran Meliá Colón', -5.99855, 37.3909, 'Calle Canalejas 1', ' Sevilla Andalucía', 'Sevilla', '', 'Spain', '', 'http://www.melia.com/en/hotels/spain/seville/gran-melia-colon/index.html', 'granmeliacolon@melia.com', 'https://th.bing.com/th/id/OIP.XLCp7Og6_Ml5mcPjGXTeCgAAAA?w=293&h=196&c=7&o=5&dpr=1.25&pid=1.7', 'Ubicado en el centro histórico, la experiencia en este hotel de 5 estrellas ofrece un toque vanguardista del servicio de lujo tradicional perfecto para viajes de ocio y negocios.'),
+(501, 'Gran Meliá de Mar', 2.53331, 39.5727, 'Paseo de las Illetas, 7', ' Mallorca ', 'Baleares', '', 'Spain', '', 'https://www.melia.com/es/hoteles/espana/mallorca/gran-melia-de-mar/index.html', 'gran.melia.de.mar@melia.com', 'https://www.kenwoodtravel.co.uk/images/properties/3058/Gran%20Melia%20De%20Mar%20SkyPool.jpg', 'Un complejo solo para adultos guiado por una cultura hedonista de descanso y relajación, único en la isla y miembro de la exclusiva colección de The Leading Hotels of the World.'),
+(502, 'Gran Meliá Fénix', -3.68928, 40.4265, 'Calle de Hermosilla, 2', 'Madrid', 'Madrid', '', 'Spain', '', 'http://www.melia.com/en/hotels/spain/madrid/gran-melia-fenix/index.html', 'gran.melia.fenix@melia.com', 'https://media-cdn.tripadvisor.com/media/photo-s/06/da/61/8e/fachada.jpg', 'Hotel exclusivo en la milla de oro de Madrid. Desde la Plaza de Colón, este hotel de 5 estrellas, miembro de «The Leading Hotels of the World», ofrece una experiencia con un toque vanguardista del servicio de lujo tradicional.'),
+(503, 'Gran Meliá Palacio de Isora', -16.8177, 28.2086, 'Avenida Los Océanos, s/n', 'Alcalá', 'Las Palmas', '', 'Spain', '', 'http://www.melia.com/en/hotels/spain/tenerife/gran-melia-palacio-de-isora/index.html', 'gran.melia.palacio.isora@melia.com', 'https://www.melia.com/dam/jcr:a42193e3-344f-48b2-a2ed-3f0969f18c01/09bGranMeliaPalacioDeIsora-Infinity_Pool.jpg', 'Situado entre el Océano Atlántico y el majestuoso Teide, este exclusivo resort con un toque vanguardista del servicio de lujo tradicional ofrece una experiencia mágica.'),
+(504, 'Hard Rock Hotel Tenerife', -16.7779, 28.1211, 'Avenida Adeje 300 nº5', 'Playa Paraíso - Adeje', 'Santa Cruz de Tenerife', '', 'Spain', '', 'https://www.hardrockhoteltenerife.com/', 'info@hrhtenerife.com', 'https://q-xx.bstatic.com/xdata/images/hotel/max1280x900/208852525.jpg?k=33d45f537f737728732f7427a6f9957715d93a51fd70d30d2b034166db77a114&o=', 'rd Rock Hotel Tenerife es un hotel completamente renovado, situado en la isla volcánica de Tenerife (en la costa noroeste de África en el océano Atlántico), uno de los destinos más fascinantes del mundo donde Hard Rock Hotel Tenerife ha encontrado su nuevo hogar en las soleadas costas del sur de Adeje y estamos listos para revolucionar tus vacaciones cuando nos elijas para tu próxima escapada a las Islas Canarias. Nuestra exclusiva línea de playa se extiende entre nuestras torres Oasis y Nirvana, con tres piscinas de aguas transparentes que abarcan toda la propiedad y la zona recreativa…'),
+(505, 'Hotel Don Pepe, a Gran Meliá Hotel', -4.90212, 36.5086, 'Calle José Meliá s/n', 'Marbella', 'Málaga', '', 'Spain', '', 'http://www.melia.com/en/hotels/spain/marbella/gran-melia-don-pepe/index.html', 'gran.melia.don.pepe@melia.com', 'https://www.melia.com/dam/jcr:7712f512-392d-4b95-ac1c-6806f123dffb/005GranMeliaDonPepe-General_Pool.jpg', 'Situado en la Costa del Sol, cerca de la Sierra Blanca, la experiencia en este hotel incluye un toque vanguardista del servicio de lujo tradicional. Ideal para descubrir Marbella.'),
+(506, 'Hotel Meliá Sevilla', -5.98338, 37.3779, 'Calle Doctor Pedro de Castro Nº1', ' Sevilla ', 'Sevilla', '', 'Spain', '', 'Hotel Melia Sevilla, Hotel moderno en Sevilla centro | Melia.com', 'antonio.navarro@melia.com', 'https://www.melia.com/dam/jcr:a34064fc-e2f8-4a3e-9854-d2c6382c06e6/401MeliaSevilla-Pool%20Eagle%20View%20(1).jpg', 'on una ubicación privilegiada junto al casco histórico, el recientemente reformado Melia Sevilla es el hotel ideal para su viaje de placer o de trabajo. Conozca nuestro exclusivo servicio The Level, una experiencia que hará su estancia inolvidabl'),
+(507, 'Hotel Palma Bellver', 2.63134, 39.5684, 'Paseo Maritimo ,11', 'Mallorca', 'Baleares', '', 'Spain', '', 'Hotel Palma Bellver by Melia, Hotel en Palma de Mallorca | Melia.com', 'javier.baqueiro@melia.com', 'https://www.melia.com/dam/jcr:6ad8a088-44ea-4800-8fd9-0489d6998abd/305HotelPalmaBellver-Pool_(1).jpg', 'En el corazón del paseo marítimo, con vistas al puerto deportivo y la Catedral y cerca de las principales áreas comerciales y de ocio de la ciudad.'),
+(508, 'Hotel Victoria, a Gran Meliá Hotel', 2.62397, 39.5639, 'Avinguda de Joan Miró, 21', 'Mallorca', 'Baleares', '', 'Spain', '', 'http://www.melia.com/en/hotels/spain/majorca/gran-melia-victoria/index.html', 'gran.melia.victoria@melia.com', 'https://www.melia.com/dam/jcr:893299f5-da5b-4890-bf93-90d847d00c55/300GranMeliaVictoria-Swimming_Pool_(1).jpg', 'El Hotel Victoria Gran Meliá es un hotel de 5 estrellas situado en primera línea del Paseo Marítimo con vistas a las maravillosas aguas azules de la Bahía. Las habitaciones han sido renovadas y la mayoría cuenta con impresionantes vistas panorámicas.'),
+(509, 'Iberostar Albufera Park-Iberostar Albufera Playa', 3.12064, 39.7954, 'Playa de Muro, s/n', 'Mallorca', 'Baleares', '', 'Spain', '', 'https://www.iberostar.com/en/hotels/majorca/iberostar-albufera-playa', 'mariadelmar.vadell@iberostar.com', 'https://hotels1.cdn.iberostar.com/uploads/image/46154/crops/750:466/540/image.jpg', 'n hotel a estrenar, a pie de playa, luminoso y vanguardista, con habitaciones pensadas para estar juntos. Tenemos un sinfín de actividades que disfrutarán los más pequeños, piscina exterior, Aquafun y climatizada, instalaciones para ciclistas y más de 7 opciones con la mejor gastronomía mediterránea.'),
+(510, 'Iberostar Andalucía Playa', 3.11514, 39.8092, 'Novo Sancti Petri', 'Chiclana de la Frontera', 'Cádiz', '', 'Spain', '', 'https://www.iberostar.com', 'cristina.morata@iberostar.com', 'https://hotels1.cdn.iberostar.com/uploads/image/46481/crops/750:466/540/image.jpg', 'Iberostar Selection Andalucía Playa es un hotel 5 estrellas ubicado en el mejor acceso a esta histórica playa. Relájate en la piscina de nuestro spa, disfruta la deliciosa gastronomía andaluza o la belleza de nuestros jardines. Y, por supuesto, no te olvides de jugar en nuestro club de golf, obra maestra de Severiano Ballesteros, 36 hoyos concebidos para los espíritus más deportistas.'),
+(511, 'Iberostar Anthelia', -16.7353, 28.0878, 'Londres, 15', 'Costa Adeje', 'Santa Cruz de Tenerife', '', 'Spain', '', 'https://www.iberostar.com', 'sonia.diaz@iberostar.com', 'https://hotels1.cdn.iberostar.com/uploads/image/51578/crops/16:9/1920/image.jpeg', 'Iberostar Anthelia es el mejor Todo Incluido de Tenerife, uno de los más premiados de España y Europa y un hotel extraordinario para familias. Entre jardines privilegiados y a los pies de la Playa de Fañabé, un cinco estrellas de arquitectura única que reproduce la estructura de un pueblo canario y acoge excelentes instalaciones: habitaciones pensadas para los niños, piscina de adultos e infantil, con toboganes y barco pirata, y un spa vanguardista. Disfruta nuestra variada oferta en sus 5 restaurantes y 3 bares, y degusta la gastronomía local.'),
+(512, 'Iberostar Bahía de Palma', 2.73735, 39.5244, 'C/ Marbella, 32', '07010 Palma De Mallorca Baleares', 'Baleares', '', 'Spain', '', 'Hotel en la playa en Mallorca | Iberostar Bahía de Palma', 'mariaantonia.amengual@iberostar.com', 'https://hotels1.cdn.iberostar.com/uploads/image/26134/crops/16:9/1920/image.jpeg', 'Nuestro hotel a orillas del Mediterráneo ofrece experiencias únicas e inolvidables que sin duda vale la pena probar: darse un chapuzón en nuestra piscina en la azotea con vistas a la bahía; admirando la puesta de sol acompañado por un DJ en nuestro restaurante Sea Soul frente al mar que ofrece cocina mediterránea; relajarse en su fantástica habitación; disfrutando de la decoración tradicional mallorquina de este hotel que está lleno de vida...Iberostar Bahía de Palma es un hotel pensado para adultos, un oasis tranquilo en Playa de Palma,a tan solo 15 minutos del centro de la ciudad y a 5 minutos del aeropuerto. ¡Mallorca es verdaderamente imperdible!'),
+(513, 'Iberostar Bouganville Playa', -16.7319, 28.0742, 'San Eugenio', 'Costa Adeje', 'Santa Cruz de Tenerife', '', 'Spain', '', 'https://www.iberostar.com', 'bousdi@iberostar.com', 'https://hotels1.cdn.iberostar.com/uploads/image/49920/crops/750:466/540/image.jpeg', 'En pleno paseo marítimo de San Eugenio, a 20 metros de la playa del Bobo, junto al puerto deportivo Colón para que salir de excursión sea sencillo, y muy cerca de un campo de golf, así de bien ubicado está Iberostar Bouganville Playa. Un hotel para familias en el que los más pequeños estrenarán nuestro nuevo Aquafun y disfrutarán nuestro completo y divertido programa de actividades Star Camp.'),
+(514, 'Iberostar Cala Millor', 2.67987, 39.6007, 'C/ Castell, 7', '07010 Palma De Mallorca', 'Baleares', '', 'Spain', '', 'Hotel con spa en Mallorca | Iberostar Cala Millor', 'camdir@iberostar.com', 'https://hotels1.cdn.iberostar.com/uploads/image/11716/crops/16:9/1920/image.jpg', '¿Has dormido alguna vez en un hotel frente al mar, con la pared frontal de cristal, para ver el amanecer desde la cama? Este hotel se encuentra en la zona más apacible de Cala Millor y tiene acceso directo a la playa. Iberostar Cala Millor es un rincón de tranquilidad, cálido y moderno, pensado especialmente para adultos, integrado en plena naturaleza junto a la zona protegida de punta de n’Amer.'),
+(515, 'Iberostar Ciudad Blanca', 2.63481, 39.6156, 'Avda. Albufera, nº 30', '07010 Palma De Mallorca ', 'Baleares', '', 'Spain', '', 'https://www.iberostar.com/hoteles/mallorca/iberostar-ciudad-blanca', 'bladir@iberostar.com', 'https://hotels1.cdn.iberostar.com/uploads/image/20442/crops/16:9/1920/image.jpeg', 'Alojándote en nuestro hotel sumarás todas las comodidades de unas vacaciones a pie de la playa más larga, accesible y familiar de Mallorca. Para que la disfrutes, te acercamos a la orilla la mejor gastronomía en nuestro Sea Soul Restaurant & Beach Club. Y en el hotel te esperamos con habitaciones familiares, con todo el entretenimiento de Star Camp y sus actividades para los más pequeños, incluida la piscina de toboganes. Todo en un entorno de pinares y jardines que te permitirá respirar la belleza del Mediterráneo.'),
+(516, 'Iberostar Club Cala Barca', 3.19993, 39.3526, 'Sa Barca Trencada, s/n', 'Santanyi', 'Baleares', '', 'Spain', '', 'https://www.iberostar.com/en/hotels/majorca/iberostar-club-cala-barca', 'catalina.fuster@iberostar.com', 'https://hotels1.cdn.iberostar.com/uploads/image/34436/crops/16:9/1920/image.jpeg', 'Sabías que en el resort de Iberostar Club Cala Barca caben más de 10 campos de fútbol reglamentarios? Es lo que ocupan nuestras espectaculares instalaciones para las mejores vacaciones en familia: 10 piscinas, 5 de ellas infantiles con barco pirata, una nueva piscina de bola, pádel, club de buceo, y un sinfín de actividades infantiles y juveniles de nuestro programa Star Camp, son algunas de las posibilidades que te ofrecemos.'),
+(517, 'Iberostar Costa del Sol', 2.63481, 39.6156, 'Urbanización Costalita, s/n.', 'Puente de Cancelada', 'Málaga', '', 'Spain', '', 'Hotel en Estepona con Todo Incluido Iberostar Costa del Sol | Iberostar', 'cdsdir@iberostar.com', 'https://hotels1.cdn.iberostar.com/uploads/image/48161/crops/750:466/540/image.jpeg', 'Sabías que en Málaga luce el sol más de 320 días al año? Puedes comprobarlo en Iberostar Costa del Sol, un hotel ubicado sobre la playa más extensa de Estepona. Elige entre varios tipos de habitaciones. Te recomendamos las suites con piscina privada o las sharing pool con vistas al mar. Si vienes en familia, tenemos habitaciones para compartir espacio y tiempo y un sinfín de actividades en nuestro Star Camp.'),
+(518, 'Iberostar Cristina', 2.74059, 39.5257, 'Bartolome Xamena, s/n', 'Playa de Palma', 'Baleares', '', 'Spain', '', 'https://www.iberostar.com/en/hotels/majorca/iberostar-cristina', 'MariaAntonia.Amengual@iberostar.com', 'https://hotels1.cdn.iberostar.com/uploads/image/55334/crops/750:466/540/image.jpeg', 'El hotel Iberostar Cristina ofrece, además, muchas alternativas para recuperar tu mejor tú: tenis, fútbol, pádel o natación en nuestra piscina climatizada y en las exteriores, o un largo paseo por la playa. Disfruta de nuestro huerto propio y de unos jardines mantenidos con planta de compost. Cuida el entorno con nosotros y cuídate con un Todo Incluido'),
+(519, 'Iberostar Fuerteventura Palace', -15.4747, 28.0605, 'Pje. Playa, nº 1', 'Urb. Las Gaviotas', 'Las Palmas', '', 'Spain', '', 'Hotel en Jandía de 5 estrellas | Iberostar Selection Fuerteventura Palace', 'calidadprl.fue@iberostar.com', 'https://hotels1.cdn.iberostar.com/uploads/image/56298/crops/750:466/540/image.jpeg', '¿Necesitas un buen descanso? Tus pies y tu mirada se perderán en la extensa playa de Jandía. Te abrimos las puertas del hotel Iberostar Selection Fuerteventura Palace, para que te adentres en la atmósfera de tranquilidad que brinda la isla. El único esfuerzo que tendrás que hacer será el de elegir entre mar o piscina climatizada, sol o noche estrellada, sauna o masaje, cocina autóctona en el buffet o restaurante japonés frente a la playa… Si no te decides, también lo puedes probar todo, especialmente si te animas a unirte a Star Prestige, el servicio que te da acceso a zonas exclusivas y disponibilidad de las mejores habitaciones.'),
+(520, 'Iberostar Grand Hotel el Mirador', -16.2912, 28.4567, 'Avda. Bruselas, s/nº', '38660 Santa Cruz De Tenerife Canarias', 'Santa Cruz de Tenerife', '', 'Spain', '', 'Hotel de 5 estrellas en Tenerife Iberostar Grand El Mirador | Iberostar', 'laura.dominguez@iberostar.com', 'https://hotels1.cdn.iberostar.com/uploads/image/34429/crops/16:9/1920/image.jpeg', 'Iberostar Grand El Mirador es un hotel diseñado con una cuidada y romántica decoración y repleto de detalles que te harán sentir como en un cuento de hadas. Se encuentra en la milla de oro de Costa Adeje, al pie de la playa del Duque y muy cerca del campo de golf. Todas sus habitaciones se abren al mar y nuestra zona Star Prestige La Balconada, permite disfrutar de unas instalaciones únicas y del personalizado servicio de mayordomía y concierge.'),
+(521, 'Iberostar Grand Hotel Portals Nous', 2.65041, 39.5903, 'C/ Falconer, 19', '07010 Palma De Mallorca ', 'Baleares', '', 'Spain', '', 'Hotel de lujo en Mallorca | Iberostar Grand Hotel Portals Nous', 'noudir@iberostar.com', '', ''),
+(522, 'Iberostar Grand Mencey', -16.2534, 28.4744, 'Doctor José Naveiras, 38', 'Santa Cruz de Tenerife, Canarias 38004', 'Santa Cruz de Tenerife', '', 'Spain', '', 'https://www.iberostar.com', 'Mcysdi@iberostar.com', 'https://hotels1.cdn.iberostar.com/uploads/image/51613/crops/750:466/540/image.jpeg', 'Iberostar Heritage Grand Mencey le ofrece una experiencia a la altura del nombre en el único hotel de gran lujo de Santa Cruz de Tenerife y a diez minutos caminando del centro. Por eso lo han elegido monarcas, actores, músicos y artistas de renombre.\n Disfrute de un hotel vanguardista que ha respetado sus más de 50 años de historia conservando el sabor de la arquitectura canaria. Relájese en sus jardines, su piscina y sus más de 4.500 m² de SPA Sensations.'),
+(523, 'Iberostar Isla Canela', -7.34679, 37.183, 'Avenida de la Mojarra s/n', 'Ayamonte', 'Huelva', '', 'Spain', '', 'https://www.grupoiberostar.com', 'catalina.mas@iberostar.com', 'https://hotels1.cdn.iberostar.com/uploads/image/51539/crops/750:466/540/image.jpeg', 'Iberostar Isla Canela es un hotel familiar y acogedor a pie de la playa y frente a un largo paseo para disfrutar los atardeceres. Todo está pensado para vosotros: habitaciones comunicadas, una inmensa piscina exterior con su bar para refrescarse y una interior. Disfruta de infinidad de actividades para niños y un sinfín de posibilidades de cuidarte en el spa o mediante el programa Aliveness que te ayuda a reconectar .');
+INSERT INTO `alojamientos` (`ALID`, `NOMBRE`, `LONGITUD`, `LATITUD`, `DIRECCION`, `LOCALIDAD`, `PROVINCIA`, `COMUNIDAD`, `PAIS`, `TELEFONO`, `WEBSITE`, `EMAIL`, `LOGO`, `DESCRIPCION`) VALUES
+(524, 'Iberostar Lanzarote Park', -13.8389, 28.8571, 'Avda. Archipiélago, 7', 'Yaiza', 'Las Palmas', '', 'Spain', '', 'https://www.iberostar.com', 'lansdi@iberostar.com', 'https://hotels1.cdn.iberostar.com/uploads/image/49038/crops/750:466/540/image.jpg', 'Iberostar Selection Lanzarote Park, cuyo proyecto supervisó el famoso arquitecto César Manrique, reproduce en su forma 3 zocos que se abren a una vista espectacular del Océano, en la primera línea de Playa Blanca. Este 5 estrellas fue, en 2018, el hotel Top 3 gastronómico de España según TripAdvisor: sus 2 restaurantes y 5 bares incluyen un food truck y el Sports Bar para atender a los paladares más exigentes. Los niños disfrutarán en un Aquafun hecho a medida, con volcán incluido. Y si vienes en pareja o con amigos, nuestro servicio Star Prestige te ofrece habitaciones excepcionales, servicios exclusivos y acceso a áreas reservadas.'),
+(525, 'Iberostar las Dalias', -16.2912, 28.4567, 'C/ Gran Bretaña, s/nº', '38670 Santa Cruz De Tenerife', 'Santa Cruz de Tenerife', '', 'Spain', '', '', 'daldir@iberostar.com', '', ''),
+(526, 'Iberostar Las Letras', -3.69934, 40.4195, 'C/ Gran vía, 11', '07010 Madrid ', 'Madrid', '', 'Spain', '', '', 'letdir@iberostar.com', '', ''),
+(527, 'Iberostar Llaüt Palace', 2.75145, 39.5136, 'Avda. d\'Amèrica, 2', '07300 Palma De Mallorca Baleares', 'Baleares', '', 'Spain', '', '', 'mariaantonia.amengual@iberostar.com', '', ''),
+(528, 'Iberostar Málaga Playa', -3.97222, 36.731, 'Ferrara s/n', 'Torrox-Costa', 'Málaga', '', 'Spain', '', 'https://www.grupoiberostar.com', 'catalina.mas@iberostar.com', '', ''),
+(529, 'Iberostar Marbella Coral Beach', 2.63481, 39.6156, 'Ctra. Nacional 340, km 176', 'Urb. Coral Beach', 'Málaga', '', 'Spain', '', '', 'mabdir@iberostar.com', '', ''),
+(530, 'Iberostar Paseo de Gracia', 2.16945, 41.3881, 'C/ Passeig de Gràcia, 1', '07010 Barcelona Barcelona', 'Baleares', '', 'Spain', '', '', 'bcndir@iberostar.com', '', ''),
+(531, 'Iberostar Pinos Park', 3.43442, 39.7016, 'Avinguda Canyamel, 33', 'Capdepera', 'Málaga', '', 'Spain', '', 'https://www.iberostar.com/en/hotels/majorca/iberostar-pinos-park', 'catalina.mas@iberostar.com', '', ''),
+(532, 'Iberostar Playa de Muro', 2.68615, 39.5786, 'Avda. Albufera s/n', '07300 Palma De Mallorca', 'Baleares', '', 'Spain', '', '', 'miquelangel.obrador@iberostar.com', '', ''),
+(533, 'Iberostar Playa de Muro Village', 2.68615, 39.5786, 'Avda. Albufera s/n', '07300 Palma De Mallorca ', 'Baleares', '', 'Spain', '', '', 'miquelangel.obrador@iberostar.com', '', ''),
+(534, 'Iberostar Playa de Palma', 2.73847, 39.5234, 'C/ Marbella, 36', '07010 Palma De Mallorca ', 'Baleares', '', 'Spain', '', '', 'mariaantonia.amengual@iberostar.com', '', ''),
+(535, 'Iberostar Playa Gaviotas', -14.3183, 28.0605, 'Pasaje Playa Nº 2', 'Las Gaviotas', 'Las Palmas', '', 'Spain', '', 'https://www.iberostar.com', 'inga.cabrera@iberostar.com', '', ''),
+(536, 'Iberostar Playa Gaviotas Park', -15.4747, 28.0605, 'Pasaje Playa, 3', 'Urb. Las Gaviotas', 'Las Palmas', '', 'Spain', '', '', 'calidadprl.fue@iberostar.com', '', ''),
+(537, 'Iberostar Royal Andalus', -6.14865, 36.3376, 'Novo Sancti Petri', 'Chiclana de la Frontera', 'Cádiz', '', 'Spain', '', 'https://www.iberostar.com', 'cristina.morata@iberostar.com', '', ''),
+(538, 'Iberostar Sábila', -16.2639, 28.4608, 'Avda. Ernesto Sarti, 5', '07010 Santa Cruz De Tenerife Canarias', 'Santa Cruz de Tenerife', '', 'Spain', '', '', 'laura.dominguez@iberostar.com', '', ''),
+(539, 'Iberostar Santa Eulàlia', 1.41954, 38.9062, 'C/ Mestral, 42', 'URB. S\'Argamassa', 'Baleares', '', 'Spain', '', '', 'seudir@iberostar.com', '', ''),
+(540, 'Iberostar Suite Hotel Jardín del Sol', 2.73492, 39.5926, 'C/ Huguet des Far, s/n', 'Urb. Es Castellot', 'Baleares', '', 'Spain', '', '', 'jardir@iberostar.com', '', ''),
+(541, 'Innside Palma Bosque', 2.62572, 39.5669, 'Camilo José Cela, 5', '07014 Mallorca ', 'Baleares', '', 'Spain', '', '', 'Innside.bosque@melia.com', '', ''),
+(542, 'Kempinski Hotel Bahía', -4.45947, 36.6888, 'Ctra de Cadiz km. 159', 'Malaga ', 'Málaga', '', 'Spain', '', 'https://www.kempinski.com/en/marbella/hotel-bahia/', 'reservations.estepona@kempinski.com', '', ''),
+(543, 'ME Ibiza', 1.41954, 38.9062, 'Urbanizacion S\'Argamassa, 153', 'Santa Eulalia del Rio', 'Baleares', '', 'Spain', '', 'http://www.melia.com/en/hotels/spain/ibiza/me-ibiza/index.html?gclid=CMzJh_TtjMACFYeXvQodBKcAJw', 'meibiza@melia.com', '', ''),
+(544, 'ME Madrid Reina Victoria', -3.70364, 40.4145, 'Plaza de Santa Ana, 14', 'Madrid ', 'Madrid', '', 'Spain', '', 'http://www.melia.com/en/hotels/spain/madrid/me-madrid-reina-victoria/index.html', 'memadrid@melia.com', '', ''),
+(545, 'Meliá Atlanterra', -6.29026, 36.5299, 'Bahía de la Plata, s/n', 'Zahara de los Atunes', 'Cádiz', '', 'Spain', '', '', 'melia.atlanterra@melia.com', '', ''),
+(546, 'Meliá Barcelona Sarrià', 2.14175, 41.3909, 'Avinguda de Sarrià, 50', ' Barcelona', 'Baleares', '', 'Spain', '', '', 'melia.barcelona.sarria@melia.com', '', ''),
+(547, 'Meliá Barcelona Sky', 2.19871, 41.4062, 'Pere IV, 272-286', 'Barcelona ', 'Barcelona', '', 'Spain', '', '', 'melia.sky@melia.com', '', ''),
+(548, 'Meliá Benidorm', -0.10437, 38.5405, 'Avenida Severo Ochoa, 1', 'Benidorm ', 'Alicante', '', 'Spain', '', '', 'melia.benidorm@melia.com', '', ''),
+(549, 'Meliá Bilbao', -2.94181, 43.2675, 'LEHENDAKARI LEIZAOLA 29', ' Bilbao ', 'Vizacaya', '', 'Spain', '', '', 'melia.bilbao@melia.com', '', ''),
+(550, 'Meliá Calviá Beach', 2.53324, 39.5031, 'Calle Violeta, 1', ' Mallorca Illes Balears', 'Baleares', '', 'Spain', '', '', 'melia.calvia.beach@melia.com', '', ''),
+(551, 'Meliá Costa del Sol', -4.49584, 36.6209, 'Paseo Marítimo, 11', 'Torremolinos', 'Málaga', '', 'Spain', '', '', 'melia.costasol@melia.com', '', ''),
+(552, 'Meliá Fuerteventura & Sol Beach House at Meliá Fuerteventura', -14.2111, 28.2081, 'Playa Barca, s/n', 'Pájara', 'Las Palmas', '', 'Spain', '', '', 'melia.fuerteventura@melia.com', '', ''),
+(553, 'Meliá Hacienda del Conde', -16.2785, 28.4706, 'Paseo Severiano Ballesteros, s/n', 'Buenavista del Norte', 'Santa Cruz de Tenerife', '', 'Spain', '', '', 'melia.haciendadelconde@melia.com', '', ''),
+(554, 'Meliá Lebreros', -5.97829, 37.385, 'Luis de Morales, 2', 'Sevilla ', 'Sevilla', '', 'Spain', '', '', 'david.urbanos@melia.com', '', ''),
+(555, 'Meliá Madrid Princesa', -3.71633, 40.4272, 'Calle de la Princesa, 27', 'Madrid ', 'Madrid', '', 'Spain', '', 'https://www.melia.com/en/hotels/spain/madrid/melia-madrid-princesa/index.html', 'melia.madrid.princesa@melia.com', '', ''),
+(556, 'Meliá Madrid Serrano', -3.68552, 40.4354, 'C/ Claudio Coello, 139', 'Madrid', 'Madrid', '', 'Spain', '', '', 'marta.rubio@melia.com', '', ''),
+(557, 'Meliá Marbella Banús', -4.94796, 36.4952, 'C/ Mario Vargas Llosa, s/n', 'Marbella', 'Málaga', '', 'Spain', '', 'https://www.melia.com/en/hotels/spain/marbella/melia-marbella-banus/index.htm', 'melia.marbella.banus@melia.com', '', ''),
+(558, 'Meliá Palma Bay', 2.66369, 39.5635, 'Carrer de Felicià Fuster, 4', ' Mallorca ', 'Baleares', '', 'Spain', '', 'https://www.melia.com/en/hotels/spain/majorca/melia-palma-bay/index.htm', 'melia.palma.bay@melia.com', '', ''),
+(559, 'Meliá Palma Marina', 2.62802, 39.5647, 'Paseo Ingeniero Gabriel Roca, 29', ' Mallorca ', 'Baleares', '', 'Spain', '', '', 'melia.palma.marina@melia.com', '', ''),
+(560, 'Meliá Sitges', 1.82179, 41.2367, 'Joan Salvat Papasseit, 38', 'Sitges', 'Barcelona', '', 'Spain', '', 'https://www.melia.com/en/hotels/spain/sitges/melia-sitges/index.htm', 'melia.sitges@melia.com', '', ''),
+(561, 'Meliá South Beach', 2.53224, 39.5046, 'Avenida Notario Alemany, 1', 'Magaluf', 'Baleares', '', 'Spain', '', 'http://www.melia.com/en/hotels/spain/majorca/me-mallorca/index.html', 'memallorca@melia.com', '', ''),
+(562, 'Meliá Tamarindos', -15.4128, 28.1001, 'Retama, 3', 'Playa de San Agustín', 'Las Palmas', '', 'Spain', '', 'https://www.melia.com/en/hotels/spain/gran-canaria/melia-tamarindos/index.htm', 'melia.tamarindos@melia.com', '', ''),
+(563, 'Meliá Villaitana', -0.14911, 38.5592, 'Avenida Alcalde Eduardo Zaplana, 7', 'Benidorm', 'Alicante', '', 'Spain', '', 'https://www.melia.com/en/hotels/spain/alicante/melia-villaitana/index.htm', 'cristina.rebner@melia.com', '', ''),
+(564, 'Meliá Zaragoza', -0.88589, 41.6516, 'Avenida Cesar Augusto, 13', 'Zaragoza', 'Zaragoza', '', 'Spain', '', '', 'maria.rubio@melia.com', '', ''),
+(565, 'Palacio de los Duques, a Gran Meliá Hotel', -3.71184, 40.4197, 'Cuesta de Santo Domingo, 5 y 7', 'Madrid ', 'Madrid', '', 'Spain', '', 'https://www.melia.com/en/hotels/spain/madrid/gran-melia-palacio-de-los-duques/index.htm', 'gmpalacio@melia.com', '', ''),
+(566, 'Sol Barbados', 2.53281, 39.5027, 'Avenida Notario Alemany, 7', 'Calviá', 'Baleares', '', 'Spain', '', 'http://www.melia.com/en/hotels/spain/majorca/sol-barbados/index.html', 'sol.barbados@melia.com', '', ''),
+(567, 'Sol Beach House Mallorca', 2.53812, 39.5139, 'Carrer Duc Estremera, 16', 'Calviá', 'Baleares', '', 'Spain', '', 'https://www.melia.com/en/hotels/spain/majorca/sol-cala-blanca/index.html', 'sol.beach.house.mallorca@melia.com', '', ''),
+(568, 'Sol Beach House Menorca', 4.03939, 39.9158, 'Playa de Santo Tomás, s/n', 'Menorca ', 'Baleares', '', 'Spain', '', 'https://www.melia.com/es/hoteles/espana/menorca/sol-beach-house-menorca/actividades.html', 'sol.beach.house.menorca@melia.com', '', ''),
+(569, 'Sol Guadalupe', 2.53113, 39.5056, 'Crta. La Porrasa, 4', 'Calviá', 'Baleares', '', 'Spain', '', 'http://www.melia.com/en/hotels/spain/majorca/sol-house-guadalupe/index.html', 'sol.guadalupe@melia.com', '', ''),
+(570, 'Sol House Studio - Calviá Beach', 2.53757, 39.5124, 'C/ Blanca, 2', 'Calviá', 'Baleares', '', 'Spain', '', 'http://www.melia.com/en/hotels/spain/majorca/sol-house-trinidad/index.html', 'sol.house.mallorca@melia.com', '', ''),
+(571, 'Sol Katmandu Park & Resort', 2.53198, 39.5102, 'Calle Galeón, s/n', 'Calviá', 'Baleares', '', 'Spain', '', 'http://www.melia.com/en/hotels/spain/majorca/sol-katmandu-park-and-resort/index.html', 'sol.katmandu.resort@melia.com', '', ''),
+(572, 'Sol Katmandu Park & Resort', 2.53198, 39.5102, 'Calle Galeón, s/n', 'Calviá', 'Baleares', '', 'Spain', '', 'http://www.melia.com/en/hotels/spain/majorca/sol-katmandu-park-and-resort/index.html', 'sol.katmandu.resort@melia.com', '', ''),
+(573, 'Sol Palmanova - Mallorca', 2.54241, 39.5449, 'Pinzones, s/n', 'Palmanova', 'Baleares', '', 'Spain', '', 'http://www.melia.com/en/hotels/spain/majorca/sol-palmanova-mirlos-tordos/index.html', 'sol.palmanova@melia.com', '', ''),
+(574, 'Sol Wave House', 2.53411, 39.5076, 'Avenida Magalluf, 18', 'Calviá', 'Baleares', '', 'Spain', '', 'http://www.melia.com/en/hotels/spain/majorca/sol-wave-house/index.html', 'sol.wave.house@melia.com', '', ''),
 (600, 'Apartamento Mirador de la Luna', -2.71963, 38.2176, 'C/ San Bartolomé, s/n', 'Hornos', 'Jaén', 'Andalucía', 'España', '953 496 163', 'www.lalunarural.es', 'reservas@lalunarural.es', 'https://lalunarural.es/sites/default/files/styles/alto600/public/001131399327047.jpg?itok=pw1hKkX4', 'La Luna Turismo Rural ofrece a sus visitantes un maravilloso alojamiento rural en Hornos, situado en el centro del Parque Natural Sierras de Cazorla, Segura y las Villas - Jaén - Andalucia'),
 (601, 'Apartamentos Cal Carter', 1.97619, 41.6995, 'Pl. Tomàs Viver, 1', 'Mura', 'Barcelona', 'Cataluña', 'España', '938 317 036', 'www.calcarter.es', 'apartaments@calcarter.es', 'http://www.calcarter.es/img/CC1.jpg', 'Para poder disfrutar de una estancia en nuestro pueblo ofrecemos apartamentos para 2, 4 y 6 personas, y también habitacion para 2 personas, situados dentro el pueblo.'),
 (602, 'Area Camper Massís del Montgrí', 3.09741, 42.0762, 'camí vell d\'Ulla, 21', 'Bellcaire d\'Empordà', 'Girona', 'Cataluña', 'España', '633 436 314', 'https://massisdelmontgri.cat/es/', 'info@massisdelmontgri.cat', 'https://massisdelmontgri.cat/images/fotos-area/foto1.jpg', 'El aula de naturaleza Ermita Vieja está situada en el espacio protegido de Sierra Nevada, cerca de Dílar, a 18 km. de la ciudad de Granada, en un valle frondoso, rodeada de nogales, huertas tradicionales y pinares. Acompañada por el sonido constante y fiel del río, el aula atiende la llegada de niños, niñas, jóvenes, adultos… que quieren conocer, disfrutar de este entorno y aprender a respetar el medio ambiente. Es un edificio rústico de nueva construcción  acondicionado para albergar a grupos en habitaciones múltiples; con amplias salas y talleres para desarrollar cómodamente los diferentes programas de trabajo, la biblioteca con la chimenea nos invita al final del día a conversar relajadamente al calor del fuego, a contar historias o a divertirnos con juegos y danzas, música, teatro…'),
@@ -247,6 +326,15 @@ CREATE TABLE `categorias` (
   `NOMBRE` varchar(128) NOT NULL COMMENT 'Nombre de la categoría de búsqueda. Obligatorio'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tabla que almacena las categorías para búsquedas';
 
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`CATID`, `NOMBRE`) VALUES
+(1, 'Gestión ambiental'),
+(2, 'Ecoturismo'),
+(3, 'Agroturismo');
+
 -- --------------------------------------------------------
 
 --
@@ -263,6 +351,18 @@ CREATE TABLE `certificados` (
   `ETIQUETA` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tabla que almacena los certificados de los que se hace seguimiento en la aplicación';
 
+--
+-- Volcado de datos para la tabla `certificados`
+--
+
+INSERT INTO `certificados` (`CERTID`, `NOMBRE`, `WEBSITE`, `DESCRIPCION`, `ORGANISMO`, `LOGO`, `ETIQUETA`) VALUES
+(1, 'Certificación Biosphere', 'https://www.biospheretourism.com/en', 'Biosphere es una certificación turística diseñada para la industria turística. Incorpora los 17 Objetivos de Desarrollo Sostenible de Naciones Unidas y las directrices emanadas de la Cumbre del Clima de París. Los estándares de certificación están relacionados con los ambitos: 1. Medio ambiente (ODS 7. Energía asequible y no contaminante, ODS 13. Acción por el clima) 2. Social (ODS 6. Agua limpia y saneamiento, ODS 12. Producción y consumo responsables, ODS 14. Vida submarina, ODS 15. Vida de ecosistemas terrestres) 3. Economía (ODS 1. Fin de la pobreza, ODS 3. Salud y Bienestar, ODS 4. Educación de calidad, ODS 5. Igualdad de Género, ODS 10. Reducción de las desigualdades, ODS 17. Alianzas para lograr los objetivos 4. Economía (ODS 2. Hambre cero, ODS 8. Trabajo decente y crecimiento económico, ODS 9. Industria, Innovación e Infraestructura) 5. Cultura (ODS 11. Ciudades y comunidades sostenibles, ODS 16. Paz, Justicia e Instituciones sólidas)', ' Instituto  de  Turismo  Responsable  (ITR).', 'https://www.biospheretourism.com/assets/img/bio2/logo-biosphere-header.svg', 'Biosphere Tourism'),
+(2, ' ECEAT QUALITY LABEL ', 'http://www.eceat.org/', 'ECEAT (European Centre for Ecological and Agricultural Tourism) es la organización líder a nivel europeo en el campo del turismo sostenible en pequeña escala. Presta una atención especial a las zonas rurales y la agricultura orgánica. Es un sistema de calidad ecológico europeo, bajo criterios de sostenibilidad que miden el nivel de compromiso medioambiental, socio-cultural y económico con el destino, en base a cuatro criterios: 1. Agricultura sostenible: Promover el cultivo ecológico y la biodiversidad agrícola con productos autóctonos. Contribución activa en materia de agricultura sostenible. Ofrecer una gastronomía de calidad basada en alimentos de proximidad, de temporada y naturales. 2. Patrimonio cultural: Sensibilidad y aprecio con respecto a las tradiciones y culturas locales y su conservación. Contribución activa en el desarrollo sostenible de la economía local. 3. Protección de la naturaleza: Respeto con el entorno que le rodea y promoción de actividades de concienciación y/o educación medioambiental 4. Recursos naturales: Gestión de los recursos naturales, tratamiento de residuos, y ahorro energético.', 'European Centre for Ecological\r and Agricultural Tourism ', 'https://greendestinations.org/wp-content/uploads/2019/04/eceat-280x300.png', 'Eceat Rural Tourism'),
+(3, 'Certificación Green Globe 21', 'https://greenglobe.com/', 'Green Globe es un sistema de certificación en sostenibilidad que ha sido desarrollado exclusivamente para la industria del turismo. Sus criterios de sostenibilidad se basan en los criterios globales de turismo sostenible: A. Demostrar una gestión sostenible eficaz. B. Maximizar los beneficios sociales y económicos para la comunidad local y minimizar los impactos negativos. C. Maximizar los beneficios para el patrimonio cultural y minimizar los impactos negativos. D. Maximizar los beneficios para el medio ambiente y minimizar los impactos negativos.', 'Green Globe', 'https://greenglobe.com/wp-content/uploads/2014/10/green-globe-logo-120.png', 'Green Globe 21'),
+(4, 'ECOLABEL UE; Catálogo de Alojamientos Turísticos ', 'http://ec.europa.eu/ecat/hotels-campsites/en', 'La Etiqueta Ecológica de la UE es una certificación destinada a promover productos y servicios que tienen un impacto ambiental reducido durante todo su ciclo de vida.  Los alojamientos certificados cumplen los criterios obligatorios para los ámbitos de 1. Energía 2. Agua 3. Gestión 4. Residuos 5. Información a los clientes además de un mínimo de otros criterios voluntarios', 'Unión Europea', 'http://ec.europa.eu/ecat/images/ecolabel-logo.gif', 'Ecolabel UE'),
+(5, 'EarthCheck', 'https://earthcheck.org/', ' EarthCheck es una certificación diseñada para la industria de viajes y turismo,  construida en los principios de la Agenda 21 de Desarrollo Sostenible. El programa requiere que los negocios midan, monitoreen y realice continuas mejoras en las áreas clave de rendimiento detalladas a continuación:  1.Emisiones de Efecto Invernadero 2.Eficiencia Energética, Conservación & Gestión  3.Gestión de Recursos de Agua Dulce 4.Conservación y Gestión de Ecosistemas 5.Gestión Social y Cultural  6.Planificación y Gestión del Uso de la Tierra 7.Protección de la Calidad del Aire 8.Gestión de Aguas Residuales 9.Gestión de Desechos Solidos 10.Sustancias Nocivas para el Medio Ambiente ', 'EarthCheck Pty Limited ', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/EC_large_Word.png/300px-EC_large_Word.png', 'Earth Check'),
+(6, 'Carta Europea Turismo Sostenible', 'http://www.redeuroparc.org/actividades/carta-europea-turismo-sostenible', 'La Carta Europea de Turismo Sostenible en Espacios Naturales Protegidos (CETS) es una iniciativa de la Federación EUROPARC que tiene como objetivo global promover el desarrollo del turismo en clave de sostenibilidad en los espacios naturales protegidos de Europa. La empresa turística adherida a la Carta Europea de Turismo Sostenible cumple: 1. Está ubicada en el ámbito del espacio natural protegido acreditado 2. Cumple la legislación vigente que le sea de aplicación (licencias, autorización para el desarrollo de la actividad..) 3. Las actividades de la empresa turística deberán ser compatibles con la estrategia de turismo sostenible y la normativa del espacio protegido 4. La empresa ha de formar parte del Foro de Turismo Sostenible creado en cada espacionatural protegido en el marco de la Carta Europea de Turismo Sostenible', 'EUROPARC ESPAÑA', 'http://www.redeuroparc.org/system/files/shared/logo-europarc.png', 'Europarc Turismo Sostenible');
+
 -- --------------------------------------------------------
 
 --
@@ -273,6 +373,15 @@ CREATE TABLE `favoritos` (
   `EXT_USRID` int NOT NULL COMMENT 'Clave del usuario. Obligatorio',
   `EXT_ALID` int NOT NULL COMMENT 'Clave del establecimiento seleccionado como favorito por el usuario. Obligatorio'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tabla que almacena las asignaciones de alojamientos como favoritos para los usuarios';
+
+--
+-- Volcado de datos para la tabla `favoritos`
+--
+
+INSERT INTO `favoritos` (`EXT_USRID`, `EXT_ALID`) VALUES
+(1, 101),
+(1, 206),
+(1, 213);
 
 -- --------------------------------------------------------
 
@@ -285,6 +394,13 @@ CREATE TABLE `perfiles` (
   `PERFIL` enum('registrado','oauth') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'Se asignan dos perfiles, uno para los usuarios registrados y otro para los que acceden mediante OAuth',
   `PASS` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT 'Contraseña como cadena encriptada en backend para los perfiles registrados'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tabla de los perfiles de los usuarios tanto registrados como de OAuth';
+
+--
+-- Volcado de datos para la tabla `perfiles`
+--
+
+INSERT INTO `perfiles` (`EXT_USRID`, `PERFIL`, `PASS`) VALUES
+(1, 'registrado', '$2b$10$lzth4KSnSCneBStQYeW2Huv99KpCbatWTYu/rvAu79lSIPYdL5.0q');
 
 -- --------------------------------------------------------
 
@@ -308,6 +424,222 @@ CREATE TABLE `union_alojamientos_certificados` (
   `EXT_CERTID` int NOT NULL COMMENT 'Clave del certificado asignado al establecimiento. Obligatorio'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tabla de asignaciones de certificados a alojamientos';
 
+--
+-- Volcado de datos para la tabla `union_alojamientos_certificados`
+--
+
+INSERT INTO `union_alojamientos_certificados` (`EXT_ALID`, `EXT_CERTID`) VALUES
+(100, 1),
+(101, 1),
+(102, 1),
+(103, 1),
+(104, 1),
+(105, 1),
+(106, 1),
+(107, 1),
+(108, 1),
+(109, 1),
+(110, 1),
+(111, 1),
+(112, 1),
+(113, 1),
+(114, 1),
+(115, 1),
+(116, 1),
+(117, 1),
+(118, 1),
+(119, 1),
+(120, 1),
+(121, 1),
+(122, 1),
+(123, 1),
+(124, 1),
+(125, 1),
+(126, 1),
+(127, 1),
+(200, 2),
+(201, 2),
+(201, 4),
+(202, 2),
+(203, 2),
+(204, 2),
+(205, 2),
+(206, 2),
+(206, 4),
+(207, 2),
+(208, 2),
+(209, 2),
+(210, 2),
+(211, 2),
+(212, 2),
+(213, 2),
+(214, 2),
+(215, 2),
+(216, 2),
+(217, 2),
+(218, 2),
+(219, 2),
+(220, 2),
+(221, 2),
+(222, 2),
+(223, 2),
+(224, 2),
+(400, 4),
+(401, 4),
+(402, 4),
+(403, 4),
+(404, 4),
+(405, 4),
+(406, 4),
+(407, 4),
+(408, 4),
+(409, 4),
+(410, 4),
+(411, 4),
+(412, 4),
+(413, 4),
+(414, 4),
+(415, 4),
+(416, 4),
+(417, 4),
+(418, 4),
+(419, 4),
+(420, 4),
+(421, 4),
+(422, 4),
+(423, 4),
+(424, 4),
+(425, 4),
+(426, 4),
+(427, 4),
+(429, 4),
+(430, 4),
+(431, 4),
+(433, 4),
+(434, 4),
+(435, 4),
+(436, 4),
+(437, 4),
+(438, 4),
+(439, 4),
+(440, 4),
+(441, 4),
+(442, 4),
+(443, 4),
+(444, 4),
+(445, 4),
+(446, 4),
+(447, 4),
+(448, 4),
+(600, 6),
+(601, 6),
+(602, 6),
+(603, 6),
+(604, 6),
+(605, 6),
+(606, 6),
+(607, 6),
+(608, 6),
+(609, 6),
+(610, 6),
+(611, 6),
+(612, 6),
+(613, 6),
+(614, 6),
+(615, 6),
+(616, 6),
+(617, 6),
+(618, 6),
+(619, 6),
+(620, 6),
+(621, 6),
+(622, 6),
+(623, 6),
+(624, 6),
+(625, 6),
+(626, 6),
+(627, 6),
+(628, 6),
+(629, 6),
+(500, 5),
+(501, 5),
+(502, 5),
+(503, 5),
+(504, 5),
+(505, 5),
+(506, 5),
+(507, 5),
+(508, 5),
+(509, 5),
+(510, 5),
+(511, 5),
+(512, 5),
+(513, 5),
+(514, 5),
+(515, 5),
+(516, 5),
+(517, 5),
+(518, 5),
+(519, 5),
+(520, 5),
+(521, 5),
+(522, 5),
+(523, 5),
+(524, 5),
+(525, 5),
+(526, 5),
+(527, 5),
+(528, 5),
+(529, 5),
+(530, 5),
+(531, 5),
+(532, 5),
+(533, 5),
+(534, 5),
+(535, 5),
+(536, 5),
+(537, 5),
+(538, 5),
+(539, 5),
+(540, 5),
+(541, 5),
+(542, 5),
+(543, 5),
+(544, 5),
+(545, 5),
+(546, 5),
+(547, 5),
+(548, 5),
+(549, 5),
+(550, 5),
+(551, 5),
+(552, 5),
+(553, 5),
+(554, 5),
+(555, 5),
+(556, 5),
+(557, 5),
+(558, 5),
+(559, 5),
+(560, 5),
+(561, 5),
+(562, 5),
+(563, 5),
+(564, 5),
+(565, 5),
+(566, 5),
+(567, 5),
+(568, 5),
+(569, 5),
+(570, 5),
+(571, 5),
+(572, 5),
+(573, 5),
+(574, 5),
+(300, 3),
+(301, 3),
+(302, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -330,6 +662,21 @@ CREATE TABLE `union_certificados_categorias` (
   `EXT_CATID` int NOT NULL COMMENT 'Clave de la categoría a la que pertenece el certificado. Obligatorio'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tabla que almacena las asignaciones de categorías a los certificados';
 
+--
+-- Volcado de datos para la tabla `union_certificados_categorias`
+--
+
+INSERT INTO `union_certificados_categorias` (`EXT_CERTID`, `EXT_CATID`) VALUES
+(1, 1),
+(3, 1),
+(5, 1),
+(2, 2),
+(4, 2),
+(6, 2),
+(2, 3),
+(4, 3),
+(6, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -339,11 +686,20 @@ CREATE TABLE `union_certificados_categorias` (
 CREATE TABLE `usuarios` (
   `USRID` int NOT NULL COMMENT 'Clave primaria de la tabla. Acepta hasta 2^32 usuarios',
   `EMAIL` varchar(255) NOT NULL COMMENT 'Nombre de usuario basado en email. Obligatorio',
-  `PASS` varchar(128) NOT NULL COMMENT 'Contraseña como cadena encriptada en backend. Obligatorio',
-  `FECHAREGISTRO` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Fecha y hora de registro del usuario. Puede usarse para comprobar la antigüedad del usuario',
+  `FECHAREGISTRO` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Fecha y hora de registro del usuario. Puede usarse para comprobar la antigüedad del usuario',
   `FECHANACIMIENTO` date DEFAULT NULL COMMENT 'Fecha de nacimiento del usuario sin hora. Puede emplearse para conocer su edad',
-  `GENERO` enum('Hombre','Mujer') DEFAULT NULL
+  `GENERO` enum('masculino','femenino','otro') CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `CONFIRMACIONREGISTRO` varchar(128) DEFAULT NULL COMMENT 'Hash de confirmación de operación de registro de nuevo usuario',
+  `ONBOARDING` tinyint NOT NULL DEFAULT '1' COMMENT 'Flag para determinar si se presentará el onboarding al usuario en su próximo acceso',
+  `PENDINGRESETPASS` varchar(128) DEFAULT NULL COMMENT 'Flag para determinar si el usuario está pendiente de realizar un cambio de contraseña'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tabla que almacena los usuarios registrado';
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`USRID`, `EMAIL`, `FECHAREGISTRO`, `FECHANACIMIENTO`, `GENERO`, `CONFIRMACIONREGISTRO`, `ONBOARDING`, `PENDINGRESETPASS`) VALUES
+(1, 'vagb.chente@gmail.com', '2021-01-04 12:03:45', '1977-11-11', 'masculino', NULL, 0, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -439,7 +795,7 @@ ALTER TABLE `alojamientos`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `CATID` int NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria de la tabla. Acepta hasta 65535 categorías';
+  MODIFY `CATID` int NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria de la tabla. Acepta hasta 65535 categorías', AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `certificados`
@@ -457,7 +813,7 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `USRID` int NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria de la tabla. Acepta hasta 2^32 usuarios';
+  MODIFY `USRID` int NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria de la tabla. Acepta hasta 2^32 usuarios', AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
