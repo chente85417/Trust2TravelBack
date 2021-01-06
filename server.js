@@ -295,14 +295,14 @@ serverObj.post("/register", (req, res) => {
                                                                                 let transporter = nodemailer.createTransport({
                                                                                     service: 'Gmail',
                                                                                     auth: {
-                                                                                        user: 'vagb.casual@gmail.com',
-                                                                                        pass: 'vagbcasual'
+                                                                                        user: 'trust2travel@gmail.com',
+                                                                                        pass: 'oauthtrust2travel'
                                                                                     },
                                                                                     tls : { rejectUnauthorized: false }
                                                                                 });
 
                                                                                 await transporter.sendMail({
-                                                                                from: 'vagb.casual@gmail.com',
+                                                                                from: 'trust2travel@gmail.com',
                                                                                 to: req.body.email,
                                                                                 subject: "Confirmación del proceso de registro",
                                                                                 text: "",
@@ -713,14 +713,14 @@ serverObj.post("/checkEmail", (req, res) => {
                                                 let transporter = nodemailer.createTransport({
                                                     service: 'Gmail',
                                                     auth: {
-                                                        user: 'vagb.casual@gmail.com',
-                                                        pass: 'vagbcasual'
+                                                        user: 'trust2travel@gmail.com',
+                                                        pass: 'oauthtrust2travel'
                                                     },
                                                     tls : { rejectUnauthorized: false }
                                                 });
                                             
                                                 await transporter.sendMail({
-                                                from: 'vagb.casual@gmail.com',
+                                                from: 'trust2travel@gmail.com',
                                                 to: req.body.email,
                                                 subject: "Cambio de contraseña para trust2travel",
                                                 text: "Por favor, acuda al siguiente link para generar una nueva contraseña:",
