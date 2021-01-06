@@ -488,15 +488,17 @@ serverObj.post("/login", (req, res) => {
                                                                 //The onboarding flag has been properly updated
                                                                 connectionDB.end();
                                                                 //Send JWT to the browser
-                                                                res.cookie("JWT", jwt)//, {"httpOnly" : true})
-                                                                .redirect(`${process.env.URLFRONT}revista`);
+                                                                res.send({"ret" : 1, "caption" : jwt});
+                                                                //res.cookie("JWT", jwt)//, {"httpOnly" : true})
+                                                                //.redirect(`${process.env.URLFRONT}revista`);
                                                             }//else if
                                                             else
                                                             {
                                                                 //The update of onboarding flag could not be accomplished
                                                                 connectionDB.end();
                                                                 console.log("Error al actualizar el flag de onboarding ",failMsg);
-                                                                res.send({"ret" : false, "caption" : failMsg});
+                                                                res.send({"ret" : 0, "caption" : failMsg});
+                                                                //res.send({"ret" : false, "caption" : failMsg});
                                                             }//else
                                                         });
                                                 }//if
@@ -505,29 +507,31 @@ serverObj.post("/login", (req, res) => {
                                                     connectionDB.end();
                                                     //Is not the first access so redirect to the home page
                                                     //Send JWT to the browser
-                                                    res.cookie("JWT", jwt)//, {"httpOnly" : true})
-                                                    .send({"ret" : true, "caption" : jwt});
+                                                    //res.cookie("JWT", jwt)
+                                                    res.send({"ret" : 2, "caption" : jwt});
+                                                    //res.cookie("JWT", jwt)//, {"httpOnly" : true})
+                                                    //.send({"ret" : true, "caption" : jwt});
                                                 }//else
                                             }//if
                                             else
                                             {
                                                 connectionDB.end();
                                                 //Passwords don´t match --> Reject
-                                                res.send({"ret" : false, "caption" : "Contraseña inválida!"});
+                                                res.send({"ret" : 0, "caption" : "Contraseña inválida!"});
                                             }//else
                                         })
                                         .catch(fail => {
                                             connectionDB.end();
                                             console.log("Error interno de la función de comparación de la contraseña");
                                             //No password found for this profile --> Reject
-                                            res.send({"ret" : false, "caption" : "Lo sentimos. Se ha producido un error durante el proceso de login y no ha sido posible completarlo. Inténtalo de nuevo más tarde."});
+                                            res.send({"ret" : 0, "caption" : "Lo sentimos. Se ha producido un error durante el proceso de login y no ha sido posible completarlo. Inténtalo de nuevo más tarde."});
                                         });
                                 }//else if
                                 else
                                 {
                                     connectionDB.end();
                                     //No password found for this profile --> Reject
-                                    res.send({"ret" : false, "caption" : "No se ha encontrado contraseña para este usuario!"});
+                                    res.send({"ret" : 0, "caption" : "No se ha encontrado contraseña para este usuario!"});
                                 }//else
                             });                            
                         }//if
@@ -535,27 +539,34 @@ serverObj.post("/login", (req, res) => {
                         {
                             connectionDB.end();
                             //The user is trying to access but still pending of confirmation --> Reject and inform
-                            res.send({"ret" : false, "caption" : "No puedes acceder hasta que no confirmes tu registro"});
+                            res.send({"ret" : 0, "caption" : "No puedes acceder hasta que no confirmes tu registro"});
                         }//else
                     }//else if
                     else
                     {
                         connectionDB.end();
                         //Not found user in DB --> Reject login
-                        res.send({"ret" : false, "caption" : "Usuario no registrado!"});
+                        res.send({"ret" : 0, "caption" : "Usuario no registrado!"});
                     }//else
                 });
             } catch(err){
                 connectionDB.end();
                 console.log("Fallo en sentencia SQL",err);
-                res.send({"ret" : false, "caption" : failMsg});
+                res.send({"ret" : 0, "caption" : failMsg});
             }
         }).catch((fail) => {
            //The connection with DB failed --> Exit sending error information
            console.log("Fallo de conexión con la BD",fail);
-           res.send({"ret" : false, "caption" : failMsg});
+           res.send({"ret" : 0, "caption" : failMsg});
         });
     }//else
+});
+
+//GET USER SESSION (POST)
+serverObj.post("/getUsr", (req, res) => {
+    //Generic failure message
+    const failMsg = "Lo sentimos. No se ha podido completar la búsqueda requerida";
+    res.send(JWT.checkJWT(req.body.JWT));
 });
 
 //OAUTH LOGIN REQUEST USING GOOGLE (GET)
@@ -1400,6 +1411,202 @@ serverObj.post("/getFavs", (req, res) => {
         res.send({"ret" : false, "caption" : failMsg});
     });
 
+});
+
+//CHECKOUT FAVOURITE STATE FOR ESTABLISHMENT AND USER (POST)
+serverObj.post("/checkFavourite", (req, res) => {
+    //Generic failure message
+    const failMsg = "Lo sentimos. No se ha podido completar la búsqueda requerida";
+
+    //ENDPOINT PROTECTION
+    let secured = JWT.checkJWT(req.body.JWT);
+    if (!secured.ret)
+    {
+        //Endpoint secure failed
+        res.send({"ret" : "error", "caption" : "error en acreditación de usuario!"});
+    }//if
+    else
+    {
+        //Endpoint secure succeeded
+        //--CONFIGURE THE SQL QUERY--//
+        let strSQL = `SELECT COUNT(favoritos.EXT_ALID) AS FAV FROM favoritos LEFT JOIN usuarios ON favoritos.EXT_USRID = usuarios.USRID WHERE usuarios.EMAIL LIKE ? AND favoritos.EXT_ALID = ?;`;
+
+        //--RETRIEVE DATA BASED ON CURRENT REQUESTS--//
+        connectorDB("MySQL", connectionData)
+        .then((connectionDB) => {
+            try {
+            //Created connection with DB --> GO ON
+            connectionDB.query({
+                sql: strSQL,
+                values: [secured.user, req.body.id]},
+                function (err, results) {
+                    if (err)
+                    {
+                        //Query failed
+                        throw err;
+                    }//if
+                    else
+                    {
+                        connectionDB.end();
+                        //Send results to front
+                        res.send({"ret" : results[0].FAV ? true : false, "caption" : ""});
+                    }//else
+                });
+            } catch(err){
+                connectionDB.end();
+                console.log("Fallo en sentencia SQL",err);
+                res.send({"ret" : "error", "caption" : failMsg});
+            }
+        })
+        //DB connection KO --> exit
+        .catch((fail) => {
+            //The connection with DB failed --> Exit sending error information
+            console.log("Fallo de conexión con la BD",fail);
+            res.send({"ret" : "error", "caption" : failMsg});
+        });
+    }//else
+});
+
+//ADD TO FAVOURITES FOR USER (POST)
+serverObj.post("/addFavourite", (req, res) => {
+    //Generic failure message
+    const failMsg = "Lo sentimos. No se ha podido completar la búsqueda requerida";
+
+    //ENDPOINT PROTECTION
+    let secured = JWT.checkJWT(req.body.JWT);
+    if (!secured.ret)
+    {
+        //Endpoint secure failed
+        res.send({"ret" : "error", "caption" : "error en acreditación de usuario!"});
+    }//if
+    else
+    {
+        //Endpoint secure succeeded
+        //RETRIEVE USER ID
+        //--CONFIGURE THE SQL QUERY--//
+        let strSQL = `SELECT USRID FROM usuarios WHERE EMAIL LIKE ?;`;
+        connectorDB("MySQL", connectionData)
+        .then((connectionDB) => {
+            try {
+            //Created connection with DB --> GO ON
+            connectionDB.query({
+                sql: strSQL,
+                values: [secured.user]},
+                function (err, userID) {
+                    if (err)
+                    {
+                        //Query failed
+                        throw err;
+                    }//if
+                    else
+                    {
+                        strSQL = `INSERT INTO favoritos VALUES(?,?);`;
+                        connectorDB("MySQL", connectionData)
+                        .then((connectionDB) => {
+                            //Created connection with DB --> GO ON
+                            connectionDB.query({
+                                sql: strSQL,
+                                values: [userID[0].USRID, req.body.alID]},
+                                function (err, results) {
+                                    if (err)
+                                    {
+                                        //Query failed
+                                        throw err;
+                                    }//if
+                                    else
+                                    {
+                                        connectionDB.end();
+                                        //Send results to front
+                                        res.send({"ret" : results.affectedRows ? true : false, "caption" : ""});
+                                    }//else
+                                });
+                        });
+                    }//else
+                });
+            } catch(err){
+                connectionDB.end();
+                console.log("Fallo en sentencia SQL",err);
+                res.send({"ret" : "error", "caption" : failMsg});
+            }
+        })
+        //DB connection KO --> exit
+        .catch((fail) => {
+            //The connection with DB failed --> Exit sending error information
+            console.log("Fallo de conexión con la BD",fail);
+            res.send({"ret" : "error", "caption" : failMsg});
+        });
+    }//else
+});
+
+//RETIRE FROM USER´S FAVOURITES (DELETE)
+serverObj.delete("/eraseFavourite", (req, res) => {
+    //Generic failure message
+    const failMsg = "Lo sentimos. No se ha podido completar la búsqueda requerida";
+
+    //ENDPOINT PROTECTION
+    let secured = JWT.checkJWT(req.body.JWT);
+    if (!secured.ret)
+    {
+        //Endpoint secure failed
+        res.send({"ret" : "error", "caption" : "error en acreditación de usuario!"});
+    }//if
+    else
+    {
+        //Endpoint secure succeeded
+        //RETRIEVE USER ID
+        //--CONFIGURE THE SQL QUERY--//
+        let strSQL = `SELECT USRID FROM usuarios WHERE EMAIL LIKE ?;`;
+        connectorDB("MySQL", connectionData)
+        .then((connectionDB) => {
+            try {
+            //Created connection with DB --> GO ON
+            connectionDB.query({
+                sql: strSQL,
+                values: [secured.user]},
+                function (err, userID) {
+                    if (err)
+                    {
+                        //Query failed
+                        throw err;
+                    }//if
+                    else
+                    {
+                        strSQL = `DELETE FROM favoritos WHERE EXT_ALID = ? AND EXT_USRID = ?;`;
+                        connectorDB("MySQL", connectionData)
+                        .then((connectionDB) => {
+                            //Created connection with DB --> GO ON
+                            connectionDB.query({
+                                sql: strSQL,
+                                values: [req.body.alID, userID[0].USRID]},
+                                function (err, results) {
+                                    if (err)
+                                    {
+                                        //Query failed
+                                        throw err;
+                                    }//if
+                                    else
+                                    {
+                                        connectionDB.end();
+                                        //Send results to front
+                                        res.send({"ret" : results.affectedRows ? true : false, "caption" : ""});
+                                    }//else
+                                });
+                        });
+                    }//else
+                });
+            } catch(err){
+                connectionDB.end();
+                console.log("Fallo en sentencia SQL",err);
+                res.send({"ret" : "error", "caption" : failMsg});
+            }
+        })
+        //DB connection KO --> exit
+        .catch((fail) => {
+            //The connection with DB failed --> Exit sending error information
+            console.log("Fallo de conexión con la BD",fail);
+            res.send({"ret" : "error", "caption" : failMsg});
+        });
+    }//else
 });
 
 /*
