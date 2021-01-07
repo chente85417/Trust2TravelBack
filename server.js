@@ -1420,6 +1420,7 @@ serverObj.post("/checkFavourite", (req, res) => {
 
     //ENDPOINT PROTECTION
     let secured = JWT.checkJWT(req.body.JWT);
+    //console.log(secured);
     if (!secured.ret)
     {
         //Endpoint secure failed
