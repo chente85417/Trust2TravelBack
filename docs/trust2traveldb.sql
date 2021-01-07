@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 04-01-2021 a las 21:02:37
+-- Tiempo de generación: 07-01-2021 a las 15:49:07
 -- Versión del servidor: 8.0.22
 -- Versión de PHP: 7.4.3
 
@@ -400,7 +400,8 @@ CREATE TABLE `perfiles` (
 --
 
 INSERT INTO `perfiles` (`EXT_USRID`, `PERFIL`, `PASS`) VALUES
-(1, 'registrado', '$2b$10$lzth4KSnSCneBStQYeW2Huv99KpCbatWTYu/rvAu79lSIPYdL5.0q');
+(1, 'registrado', '$2b$10$lzth4KSnSCneBStQYeW2Huv99KpCbatWTYu/rvAu79lSIPYdL5.0q'),
+(9, 'registrado', '$2b$10$aHJ8NgOcbNXyA7gKouDZ1evfdOxmMSctHGrISjCvtsmItyOLMIVYa');
 
 -- --------------------------------------------------------
 
@@ -686,7 +687,7 @@ INSERT INTO `union_certificados_categorias` (`EXT_CERTID`, `EXT_CATID`) VALUES
 CREATE TABLE `usuarios` (
   `USRID` int NOT NULL COMMENT 'Clave primaria de la tabla. Acepta hasta 2^32 usuarios',
   `EMAIL` varchar(255) NOT NULL COMMENT 'Nombre de usuario basado en email. Obligatorio',
-  `FECHAREGISTRO` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Fecha y hora de registro del usuario. Puede usarse para comprobar la antigüedad del usuario',
+  `FECHAREGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Fecha y hora de registro del usuario. Puede usarse para comprobar la antigüedad del usuario',
   `FECHANACIMIENTO` date DEFAULT NULL COMMENT 'Fecha de nacimiento del usuario sin hora. Puede emplearse para conocer su edad',
   `GENERO` enum('masculino','femenino','otro') CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `CONFIRMACIONREGISTRO` varchar(128) DEFAULT NULL COMMENT 'Hash de confirmación de operación de registro de nuevo usuario',
@@ -699,7 +700,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`USRID`, `EMAIL`, `FECHAREGISTRO`, `FECHANACIMIENTO`, `GENERO`, `CONFIRMACIONREGISTRO`, `ONBOARDING`, `PENDINGRESETPASS`) VALUES
-(1, 'vagb.chente@gmail.com', '2021-01-04 12:03:45', '1977-11-11', 'masculino', NULL, 0, NULL);
+(1, 'vagb.chente@gmail.com', '2021-01-04 12:03:45', '1977-11-11', 'masculino', NULL, 0, NULL),
+(9, 'marisgarceranb@gmail.com', '2021-01-06 21:43:10', '1977-01-17', 'femenino', NULL, 0, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -813,7 +815,7 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `USRID` int NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria de la tabla. Acepta hasta 2^32 usuarios', AUTO_INCREMENT=2;
+  MODIFY `USRID` int NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria de la tabla. Acepta hasta 2^32 usuarios', AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas
