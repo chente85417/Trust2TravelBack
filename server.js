@@ -42,6 +42,12 @@ serverObj.listen(process.env.PORT || process.env.PORTBACK || 8888, () => {consol
 //OAuth2 client for Google
 let googleOAuth2Client = undefined;
 
+//OAuth2 client for nodemailer
+const oauth2Nodemailer = createGoogleOAuth("https://developers.google.com/oauthplayground");
+oauth2Nodemailer.setCredentials({
+    refresh_token: `${process.env.GOOGLE_MAIL_REFRESH_TOKEN}`
+});
+
 //Data connection to MySQL
 const connectionData = {
     "host" : process.env.DB_HOST,
@@ -157,7 +163,7 @@ const connectorDB = (dbms, connectionData) => {
 	}
 };//connectorDB
 
-const createGoogleOAuth = () => {
+const createGoogleOAuth = (url) => {
     //Retrieve previously stored credentials for accessing Google auth service
     let GOOGLE_CLIENT_SECRET    = `${process.env.GOOGLE_CLIENT_SECRET}`;
     let GOOGLE_CLIENT_ID        = `${process.env.GOOGLE_CLIENT_ID}`;
@@ -167,7 +173,7 @@ const createGoogleOAuth = () => {
         GOOGLE_CLIENT_ID,
         GOOGLE_CLIENT_SECRET,
         //This is the url Google will call once the permissions are granted
-        `${process.env.URLBACK}login/Google`
+        url
         //"http://localhost:8888/login/Google"
     );
 };//createGoogleOAuth
@@ -292,12 +298,21 @@ serverObj.post("/register", (req, res) => {
                                                                             //Transaction committed --> Send confirmation email to the user
                                                                             //Send confirmation mail to new user
                                                                             async function main() {
+                                                                                const accessToken = oauth2Nodemailer.getAccessToken();
                                                                                 let transporter = nodemailer.createTransport({
                                                                                     service: 'Gmail',
                                                                                     auth: {
+                                                                                        type: "OAuth2",
+                                                                                        user: "trust2travel@gmail.com", 
+                                                                                        clientId: `${process.env.GOOGLE_CLIENT_ID}`,
+                                                                                        clientSecret: `${process.env.GOOGLE_CLIENT_SECRET}`,
+                                                                                        refreshToken: `${process.env.GOOGLE_MAIL_REFRESH_TOKEN}`,
+                                                                                        accessToken: accessToken
+                                                                                   },
+                                                                                    /*auth: {
                                                                                         user: 'trust2travel@gmail.com',
                                                                                         pass: 'oauthtrust2travel'
-                                                                                    },
+                                                                                    },*/
                                                                                     tls : { rejectUnauthorized: false }
                                                                                 });
 
@@ -572,7 +587,7 @@ serverObj.post("/getUsr", (req, res) => {
 //OAUTH LOGIN REQUEST USING GOOGLE (GET)
 serverObj.get("/loginGoogle", (req, res) => {
     //Creation of Google OAuth2 client
-    googleOAuth2Client = createGoogleOAuth();
+    googleOAuth2Client = createGoogleOAuth(`${process.env.URLBACK}login/Google`);
     //Redirect the user to Google auth permissions
     let a = getGoogleOAuthUrl(googleOAuth2Client);
     console.log(a);
