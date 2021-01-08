@@ -42,12 +42,6 @@ serverObj.listen(process.env.PORT || process.env.PORTBACK || 8888, () => {consol
 //OAuth2 client for Google
 let googleOAuth2Client = undefined;
 
-//OAuth2 client for nodemailer
-const oauth2Nodemailer = createGoogleOAuth("https://developers.google.com/oauthplayground");
-oauth2Nodemailer.setCredentials({
-    refresh_token: `${process.env.GOOGLE_MAIL_REFRESH_TOKEN}`
-});
-
 //Data connection to MySQL
 const connectionData = {
     "host" : process.env.DB_HOST,
@@ -192,6 +186,12 @@ const getGoogleOAuthUrl = (oauthClient) => {
 		"scope": scopes
 	});
 };//getGoogleOAuthUrl
+
+//OAuth2 client for nodemailer
+const oauth2Nodemailer = createGoogleOAuth("https://developers.google.com/oauthplayground");
+oauth2Nodemailer.setCredentials({
+    refresh_token: `${process.env.GOOGLE_MAIL_REFRESH_TOKEN}`
+});
 
 //-----------SERVER ROUTING---------------//
 //REGISTER NEW USER (POST)
