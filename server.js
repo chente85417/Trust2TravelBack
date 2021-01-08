@@ -591,7 +591,8 @@ serverObj.get("/loginGoogle", (req, res) => {
     //Redirect the user to Google auth permissions
     let a = getGoogleOAuthUrl(googleOAuth2Client);
     console.log(a);
-    res.redirect(a);
+    res.send(a);
+    //res.redirect(a);
 });
 
 //OAUTH LOGIN REQUEST USING FACEBOOK (GET)
