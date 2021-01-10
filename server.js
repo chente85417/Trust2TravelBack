@@ -608,33 +608,43 @@ serverObj.get("/login/:Provider", (req, res) => {
     {
         case "Google":
             {
+                console.log("Google");
                 if (googleOAuth2Client)
                 {
                     const {code} = req.query;
                     console.log('código temporal ',code);
                     if (code)
                     {
+                        console.log("antes de la promesa");
                         const p = new Promise((resolve, reject) => {
                             resolve(googleOAuth2Client.getToken(code));
                         });
                         p.then((dataFromGoogle) => {
                             const { tokens } = dataFromGoogle;
                             googleOAuth2Client.setCredentials(tokens);
+                            console.log("promesa resuelta");
                             console.log(tokens);
                             if (tokens.id_token && tokens.access_token) {
                                 // Fetch the user's profile with the access token and bearer
                                 try {
-                                    console.log('previo a la llamada');
+                                    console.log('previo a la llamada ',`https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${tokens.access_token}`);
                                     fetch(`https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${tokens.access_token}`, {
                                             headers : {
                                                 'Authorization': `Bearer ${tokens.id_token}`
                                             }
                                         })
-                                        .then(data => {
+                                        .then(resG => resG.json())
+                                        .then(dataG => {
+                                            oauthUserData = dataG;
+                                            console.log(oauthUserData);
+                                            res.send("OAUTH DE GOOGLE EN CONSTRUCCIÓN...");
+                                        });
+                                        /*.then(data => {
                                             oauthUserData = data.json();
+                                            console.log("a continuación respuesta de Google para oauthUserData");
                                             console.log(oauthUserData);
                                             res.redirect("/");
-                                        });
+                                        });*/
                                 } catch (error) {
                                     console.log(error);
                                     // throw new Error(error.message);
