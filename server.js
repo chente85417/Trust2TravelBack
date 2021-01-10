@@ -620,6 +620,7 @@ serverObj.get("/login/:Provider", (req, res) => {
                         p.then((dataFromGoogle) => {
                             const { tokens } = dataFromGoogle;
                             googleOAuth2Client.setCredentials(tokens);
+                            console.log(tokens);
                             if (tokens.id_token && tokens.access_token) {
                                 // Fetch the user's profile with the access token and bearer
                                 try {
@@ -631,6 +632,7 @@ serverObj.get("/login/:Provider", (req, res) => {
                                         })
                                         .then(data => {
                                             oauthUserData = data.json();
+                                            console.log(oauthUserData);
                                             res.redirect("/");
                                         });
                                 } catch (error) {
@@ -1053,6 +1055,53 @@ serverObj.get("/getCertificatesBasics", (req, res) => {
     });
 });
 
+//RETRIEVE LOCATIONS DATA (GET)
+serverObj.get("/getLocations", (req, res) => {
+    //Generic failure message
+    const failMsg = "";
+    
+    //--CREATE A CONNECTION WITH DB--//
+    connectorDB("MySQL", connectionData)
+    .then((connectionDB) => {
+        //Created connection with DB --> GO ON
+        try {
+            connectionDB.query({
+                sql : "SELECT ALID, NOMBRE, LATITUD, LONGITUD FROM alojamientos;",
+                values : []},
+                function (err, result) {
+                    if (err)
+                    {
+                        //Query failed
+                        throw err;
+                    }//if
+                    else if (result.length)
+                    {
+                        connectionDB.end();
+                        //Found token in DB
+                        res.send({"ret" : true, "caption" : result});
+                        //.redirect(`${process.env.URLFRONT}XX`);
+                    }//else if
+                    else
+                    {
+                        connectionDB.end();
+                        console.log("No se han encontrado datos de alojamientos en la BD");
+                        res.send({"ret" : false, "caption" : failMsg});
+                    }//else
+                });
+            } catch(err){
+                connectionDB.end();
+                console.log("Fallo en sentencia SQL",err);
+                res.send({"ret" : false, "caption" : failMsg});
+            }
+    })
+    //DB connection KO --> exit
+    .catch((fail) => {
+        //The connection with DB failed --> Exit sending error information
+        console.log("Fallo de conexión con la BD",fail);
+        res.send({"ret" : false, "caption" : failMsg});
+    });
+});
+
 //SEARCH ESTABLISHMENTS (POST)
 serverObj.post("/startSearch", (req, res) => {
     //Generic failure message
@@ -1334,7 +1383,7 @@ serverObj.get("/getActivities/:loc", (req, res) => {
         //Created connection with DB --> GO ON
         try {
             connectionDB.query({
-                sql : "SELECT ACTID, NOMBRE, DESCRIPCION, DIRECCION, LOCALIDAD, IMAGEN FROM actividades WHERE PROVINCIA LIKE ?;",
+                sql : "SELECT ACTID, NOMBRE, DESCRIPCION, DIRECCION, LOCALIDAD, IMAGEN, WEBSITE FROM actividades WHERE PROVINCIA LIKE ?;",
                 values : [req.params.loc]},
                 function (err, result) {
                     if (err)
