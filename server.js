@@ -215,7 +215,7 @@ serverObj.post("/register", (req, res) => {
             //--CHECK OUT IF NEW USER ALREADY EXISTS IN DB--//
             try {
                 connectionDB.query({
-                    sql : "SELECT USRID FROM usuarios WHERE EMAIL LIKE ?",
+                    sql : "SELECT u.USRID, p.PERFIL FROM usuarios AS u LEFT JOIN perfiles AS p ON u.USRID = p.EXT_USRID WHERE u.EMAIL LIKE ?",
                     values : [req.body.email]},
                     function (err, result) {
                     if (err)
@@ -225,10 +225,43 @@ serverObj.post("/register", (req, res) => {
                     }//if
                     else if (result.length)
                     {
-                        console.log("Eliminación de conexión con BD tras comprobar que el usuario ya está registrado");
-                        connectionDB.end();
-                        //Found user in DB --> No registering and exit
-                        res.send({"ret" : false, "caption" : "Usuario ya registrado!"});
+                        if (result[0].PERFIL === 'registrado')
+                        {
+                            console.log("Eliminación de conexión con BD tras comprobar que el usuario ya está registrado");
+                            connectionDB.end();
+                            //Found user in DB --> No registering and exit
+                            res.send({"ret" : false, "caption" : "Usuario ya registrado!"});
+                        }//if
+                        else
+                        {
+                            //User previously registered from oauth
+                            //Hash the password
+                            bcrypt.hash(req.body.password, 10)
+                            .then(hash => {
+                                connectionDB.query({
+                                    sql : `INSERT INTO perfiles(EXT_USRID, PERFIL, PASS)
+                                                VALUES (?, ?, ?)`,
+                                    values : [result[0].USRID, "registrado", hash]}, 
+                                    function (err, results) {
+                                        if (err)
+                                        {
+                                            //Query failed
+                                            throw err;
+                                        }//if
+                                        else if (results.affectedRows)
+                                        {
+                                            res.send({"ret" : true, "caption" : `${process.env.URLFRONT}login/confirm`});
+                                        }//else
+                                    })
+                            .catch(fail => {
+                                console.log("Eliminación de conexión con BD tras error de creación de hash de contraseña");
+                                connectionDB.end();
+                                //Password hash KO --> exit
+                                console.log("Fallo al encriptar la contraseña",fail);
+                                res.send({"ret" : false, "caption" : failMsg});
+                                });
+                            });
+                        }//else
                     }//else if
                     else
                     {
@@ -608,26 +641,20 @@ serverObj.get("/login/:Provider", (req, res) => {
     {
         case "Google":
             {
-                console.log("Google");
                 if (googleOAuth2Client)
                 {
                     const {code} = req.query;
-                    console.log('código temporal ',code);
                     if (code)
                     {
-                        console.log("antes de la promesa");
                         const p = new Promise((resolve, reject) => {
                             resolve(googleOAuth2Client.getToken(code));
                         });
                         p.then((dataFromGoogle) => {
                             const { tokens } = dataFromGoogle;
                             googleOAuth2Client.setCredentials(tokens);
-                            console.log("promesa resuelta");
-                            console.log(tokens);
                             if (tokens.id_token && tokens.access_token) {
                                 // Fetch the user's profile with the access token and bearer
                                 try {
-                                    console.log('previo a la llamada ',`https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${tokens.access_token}`);
                                     fetch(`https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${tokens.access_token}`, {
                                             headers : {
                                                 'Authorization': `Bearer ${tokens.id_token}`
@@ -635,26 +662,175 @@ serverObj.get("/login/:Provider", (req, res) => {
                                         })
                                         .then(resG => resG.json())
                                         .then(dataG => {
+                                            //At this point Google has given required user´s data
                                             oauthUserData = dataG;
-                                            console.log(oauthUserData);
-                                            res.send("OAUTH DE GOOGLE EN CONSTRUCCIÓN...");
+
+                                            //Check if this user is a registered one
+                                            //--CREATE A CONNECTION WITH DB--//
+                                            connectorDB("MySQL", connectionData)
+                                            .then((connectionDB) => {
+                                                //Created connection with DB --> GO ON
+                                                //--CHECK IF USER IS REGISTERED--//
+                                                try {
+                                                    connectionDB.query({
+                                                        sql : "SELECT USRID, CONFIRMACIONREGISTRO, ONBOARDING FROM usuarios WHERE EMAIL LIKE ?",
+                                                        values : [oauthUserData.email]},
+                                                        function (err, resultA) {
+                                                        if (err)
+                                                        {
+                                                            //Query failed
+                                                            throw err;
+                                                        }//if
+                                                        else if (resultA.length)
+                                                        {
+                                                            //The user is a registered one --> GO ON
+                                                            //--CHECK IF USER IS PENDING OF CONFIRMATION--//
+                                                            if (resultA[0].CONFIRMACIONREGISTRO === null)
+                                                            {
+                                                                //User is confirmed --> GO ON
+                                                                //--CREATE SESSION WITH A JWT--//
+                                                                const Payload = {
+                                                                    "user" : oauthUserData.email,
+                                                                    "iat" : new Date()
+                                                                };
+                                                                const jwt = JWT.buildJWT(Payload);
+                                                                //--CHECK THE ONBOARDING CONDITION--//
+                                                                if (resultA[0].ONBOARDING)
+                                                                {
+                                                                    //Is the first access so update the onboarding flag and redirect to the onboarding page
+                                                                    connectionDB.query({
+                                                                        sql : "UPDATE usuarios SET ONBOARDING = '0' WHERE USRID = ?",
+                                                                        values : [resultA[0].USRID]},
+                                                                        function (err, resultUpdateOnboarding) {
+                                                                            if (err)
+                                                                            {
+                                                                                //Query failed
+                                                                                throw err;
+                                                                            }//if
+                                                                            else if (resultUpdateOnboarding)
+                                                                            {
+                                                                                //The onboarding flag has been properly updated
+                                                                                connectionDB.end();
+                                                                                //Send JWT to the browser
+                                                                                res.cookie("JWT", jwt)//, {"httpOnly" : true})
+                                                                                .redirect(`${process.env.URLFRONT}revista`);
+                                                                            }//else if
+                                                                            else
+                                                                            {
+                                                                                //The update of onboarding flag could not be accomplished
+                                                                                connectionDB.end();
+                                                                                console.log("Error al actualizar el flag de onboarding ",failMsg);
+                                                                                res.redirect(`${process.env.URLFRONT}infoPage`);
+                                                                            }//else
+                                                                        });
+                                                                }//if
+                                                                else
+                                                                {
+                                                                    connectionDB.end();
+                                                                    //Is not the first access so redirect to the home page
+                                                                    res.cookie("JWT", jwt)
+                                                                    .redirect(`${process.env.URLFRONT}home`);
+                                                                }//else                         
+                                                            }//if
+                                                            else
+                                                            {
+                                                                connectionDB.end();
+                                                                //The user is trying to access but still pending of confirmation --> Reject and inform
+                                                                res.redirect(`${process.env.URLFRONT}infoPage/FailOAuth`);
+                                                            }//else
+                                                        }//else if
+                                                        else
+                                                        {
+                                                            //The user is not a registered one
+                                                            //Is validated by Google so create a pseudo-register
+                                                            connectionDB.beginTransaction(function(err) {
+                                                                if (err)
+                                                                {
+                                                                    //Transaction failed --> Exit and inform
+                                                                    throw err;
+                                                                }//if
+                                                                else
+                                                                {
+                                                                    //--INSERT NEW USER IN USERS TABLE--//
+                                                                    connectionDB.query({
+                                                                        sql : `INSERT INTO usuarios(EMAIL, GENERO, ONBOARDING) VALUES (?, ?, ?)`,
+                                                                        values : [oauthUserData.email, 'otro', 1]}, 
+                                                                        function (err, results) {
+                                                                            if (err)
+                                                                            {
+                                                                                //Error in query --> rollback
+                                                                                return connectionDB.rollback(function() {
+                                                                                    throw err;
+                                                                                });
+                                                                            }//if
+                                                                            else
+                                                                            {
+                                                                                //--INSERT PROFILE FOR THE USER IN PROFILES TABLE--//
+                                                                                connectionDB.query({
+                                                                                    sql : `INSERT INTO perfiles(EXT_USRID, PERFIL) VALUES (?, ?)`,
+                                                                                    values : [results.insertId, "oauth"]}, 
+                                                                                    function (err, results) {
+                                                                                        if (err)
+                                                                                        {
+                                                                                            //Error in query --> rollback
+                                                                                            return connectionDB.rollback(function() {
+                                                                                                throw err;
+                                                                                            });
+                                                                                        }//if
+                                                                                        else
+                                                                                        {
+                                                                                            //--COMMIT TRANSACTION--//
+                                                                                            connectionDB.commit(function(err) {
+                                                                                                if (err)
+                                                                                                {
+                                                                                                    //Commit failed --> rollback
+                                                                                                    return connectionDB.rollback(function() {
+                                                                                                        throw err;
+                                                                                                    });
+                                                                                                }//if
+                                                                                                else
+                                                                                                {
+                                                                                                    //Transaction committed
+                                                                                                    connectionDB.end();
+                                                                                                    //--CREATE SESSION WITH A JWT--//
+                                                                                                    const Payload = {
+                                                                                                        "user" : oauthUserData.email,
+                                                                                                        "iat" : new Date()
+                                                                                                    };
+                                                                                                    const jwt = JWT.buildJWT(Payload);
+                                                                                                    res.cookie("JWT", jwt)
+                                                                                                    .redirect(`${process.env.URLFRONT}revista`);
+                                                                                                }//else
+                                                                                            });//commit
+                                                                                        }//else
+                                                                                    });
+                                                                            }//else                                    
+                                                                        });
+                                                                }//else
+                                                            });
+                                                        }//else
+                                                    });
+                                                } catch(err){
+                                                    connectionDB.end();
+                                                    console.log("Fallo en sentencia SQL",err);
+                                                    res.redirect(`${process.env.URLFRONT}infoPage/GenericError`);
+                                                }
+                                            }).catch((fail) => {
+                                            //The connection with DB failed --> Exit sending error information
+                                            console.log("Fallo de conexión con la BD",fail);
+                                            res.redirect(`${process.env.URLFRONT}infoPage/GenericError`);
+                                            });
                                         });
-                                        /*.then(data => {
-                                            oauthUserData = data.json();
-                                            console.log("a continuación respuesta de Google para oauthUserData");
-                                            console.log(oauthUserData);
-                                            res.redirect("/");
-                                        });*/
                                 } catch (error) {
                                     console.log(error);
                                     // throw new Error(error.message);
-                                    res.redirect(301, "/");
+                                    res.redirect(`${process.env.URLFRONT}infoPage/GenericError`);
                                 }
                             }//if
                             else
                             {
                                 //No data for token generation --> exit
-                                res.redirect(301, "/");
+                                res.redirect(`${process.env.URLFRONT}infoPage/GenericError`);
                             }//else
                         })
                     }//if
@@ -663,7 +839,7 @@ serverObj.get("/login/:Provider", (req, res) => {
                 {
                     //No oauth client ready --> exit
                     console.log('no hay cliente oauth');
-                    res.redirect(301, "/");
+                    res.redirect(`${process.env.URLFRONT}infoPage/GenericError`);
                 }//else
                 break;
             }
@@ -1684,105 +1860,3 @@ serverObj.delete("/eraseFavourite", (req, res) => {
         });
     }//else
 });
-
-/*
-serverObj.get("/initSeekerData", (req, res) => {
-    //Generic failure message
-    const failMsg = "";
-    
-    //--CREATE A CONNECTION WITH DB--//
-    connectorDB("MySQL", connectionData)
-    .then((connectionDB) => {
-        //Created connection with DB --> GO ON
-        try {
-            connectionDB.query({
-                sql : "",
-                values : []},
-                function (err, result) {
-                    if (err)
-                    {
-                        //Query failed
-                        throw err;
-                    }//if
-                    else if (result.length)
-                    {
-                        connectionDB.end();
-                        //Found token in DB
-                        res.send({"ret" : false, "caption" : failMsg})
-                        .redirect(`${process.env.URLFRONT}XX`);
-                    }//else if
-                    else
-                    {
-                        connectionDB.end();
-                        console.log("");
-                        res.send({"ret" : false, "caption" : failMsg});
-                    }//else
-                });
-            } catch(err){
-                connectionDB.end();
-                console.log("Fallo en sentencia SQL",err);
-                res.send({"ret" : false, "caption" : failMsg});
-            }
-    })
-    //DB connection KO --> exit
-    .catch((fail) => {
-        //The connection with DB failed --> Exit sending error information
-        console.log("Fallo de conexión con la BD",fail);
-        res.send({"ret" : false, "caption" : failMsg});
-    });
-});
-*/
-/*
-serverObj.get("/login/:Provider", async (req, res) => {
-    const provider = req.params.Provider;
-    console.log(provider);
-    switch (provider)
-    {
-        case "Google":
-            {
-                if (googleOAuth2Client)
-                {
-                    const {code} = req.query;
-                    console.log('código temporal ',code);
-                    if (code)
-                    {
-                        const { tokens } = await googleOAuth2Client.getToken(code);
-                        googleOAuth2Client.setCredentials(tokens);
-                        if (tokens.id_token && tokens.access_token) {
-                            // Fetch the user's profile with the access token and bearer
-                            try {
-                                console.log('previo a la llamada');
-                                const res = await fetch(`https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${tokens.access_token}`, {
-                                    headers : {
-                                        'Authorization': `Bearer ${tokens.id_token}`
-                                    }
-                                });
-                                console.log('posterior a la llamada');
-                                const googleUser = await res.json();
-                                console.log(googleUser);
-                            } catch (error) {
-                                console.log(error);
-                                // throw new Error(error.message);
-                            }
-                        }//if
-                        else
-                        {
-                            //No data for token generation --> exit
-                            res.redirect("/");
-                        }//else
-                    }//if
-                }//if
-                else
-                {
-                    //No oauth client ready --> exit
-                    console.log('no hay cliente oauth');
-                    res.redirect("/");
-                }//else
-                break;
-            }
-        case "Facebook":
-            {
-                break;
-            }
-    }//switch
-});*/
