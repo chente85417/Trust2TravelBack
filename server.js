@@ -36,7 +36,7 @@ dotenv.config();
 //Creation of Express server object
 const serverObj = express();
 
-serverObj.set("trust proxy", true);
+//serverObj.set("trust proxy", true);
 
 //Raise Express server on listening port
 serverObj.listen(process.env.PORT || process.env.PORTBACK || 8888, () => {console.log(`Express server listening on port ${process.env.PORT} if deployed; ${process.env.PORTBACK} if local`)});
