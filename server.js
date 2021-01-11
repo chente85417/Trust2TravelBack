@@ -36,6 +36,8 @@ dotenv.config();
 //Creation of Express server object
 const serverObj = express();
 
+serverObj.set("trust proxy", true);
+
 //Raise Express server on listening port
 serverObj.listen(process.env.PORT || process.env.PORTBACK || 8888, () => {console.log(`Express server listening on port ${process.env.PORT} if deployed; ${process.env.PORTBACK} if local`)});
 
@@ -728,6 +730,7 @@ serverObj.get("/login/:Provider", (req, res) => {
                                                                 {
                                                                     connectionDB.end();
                                                                     //Is not the first access so redirect to the home page
+                                                                    console.log("se fija cookie",jwt);
                                                                     res.cookie("JWT", jwt)
                                                                     .redirect(`${process.env.URLFRONT}home`);
                                                                 }//else                         
